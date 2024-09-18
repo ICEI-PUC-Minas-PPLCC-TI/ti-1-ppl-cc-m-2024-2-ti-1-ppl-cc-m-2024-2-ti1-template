@@ -6,7 +6,7 @@ Estamos procurando possíveis soluções para diminuir a lotação nos transport
 ## Alunos integrantes da equipe
 
 * Pedro Henrique Cordeiro Quinellato
-* Nome completo do aluno 2
+* Guilherme Leão Rabelo
 * Nome completo do aluno 3
 
 ## Professores responsáveis
