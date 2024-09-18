@@ -7,7 +7,7 @@ Informações básicas do projeto.
 * **Membros da equipe:**
 
   * [Pedro Henrique C. Quinellato](https://github.com/PedroQuinellato)
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
+  * [Guilherme Leão Rabelo](https://github.com/gleaor) 
   * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
 
 A documentação do projeto é estruturada da seguinte forma:
