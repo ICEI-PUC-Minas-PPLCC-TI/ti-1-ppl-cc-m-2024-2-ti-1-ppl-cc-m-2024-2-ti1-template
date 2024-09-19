@@ -42,7 +42,7 @@ A documentação do projeto é estruturada da seguinte forma:
 
 ## Objetivos
 
-**✳️✳️✳️ O nosso objetivo é, pelo meio de nossa solução, proporciar às pessoas que dependem de transporte público rotas alternativas que possam ser mais baratas e rápidas. Através disso, temos como objetivo também diminuir a lotação em ônibus e metrôs, utilizando da nossa tecnologia para conectar usuários com rotas mais eficientes e assim dispersando os mesmos de rotas muito utilizadas.✳️✳️✳️**
+**O nosso objetivo é, pelo meio de nossa solução, proporciar às pessoas que dependem de transporte público rotas alternativas que possam ser mais baratas e rápidas. Através disso, temos como objetivo também diminuir a lotação em ônibus e metrôs, utilizando da nossa tecnologia para conectar usuários com rotas mais eficientes e assim dispersando os mesmos de rotas muito utilizadas.**
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 >
@@ -54,7 +54,7 @@ A documentação do projeto é estruturada da seguinte forma:
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+**Um dos principais motivos para o desenvolvimento das ideias do nosso projeto é a necessidade de ter algum método que ajude contra a lotação dos transportes públicos e alternativas de transportes que sejam mais rápidas e baratas de forma que os transportes públicos como ônibus/metro não sejam as unicas opções viáveis no dia a dia**
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 >
@@ -68,7 +68,7 @@ A documentação do projeto é estruturada da seguinte forma:
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+**A princípio o nosso público-alvo seria as pessoas que diariamente usam os transportes públicos como ônibus/metro que estejam na margem de 20 até 30 anos**
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 >
