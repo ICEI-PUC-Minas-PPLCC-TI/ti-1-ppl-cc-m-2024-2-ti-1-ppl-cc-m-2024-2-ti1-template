@@ -91,7 +91,7 @@ A documentação do projeto é estruturada da seguinte forma:
 >
 > Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
 >
-> * **![Matriz CSD](image.png)**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
+> * **![Matriz CSD](image(1).png)**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
 > * **![Mapa de Stakeholders](image-1.png)**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
 > * **![Entrevistas Qualitativas](image-2.png)![Entrevista 2](image-3.png)**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
 > * **![Highlights de Pesquisa](image-4.png)![Highlight Entrevista 2](image-5.png)**: um compilado do levantamento realizado por meio das entrevistas.
