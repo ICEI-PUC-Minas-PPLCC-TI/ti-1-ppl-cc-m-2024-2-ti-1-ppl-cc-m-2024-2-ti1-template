@@ -28,6 +28,10 @@ A documentação do projeto é estruturada da seguinte forma:
 ## Problema
 
 **O problema são as causas da lotação, uma nova pesquisa divulgada pelo Moovit, aplicativo de rotas para pedestres, perguntou a passageiros de transporte público o que os faria se sentir mais seguros nos modais. 83% pediram o aumento da frota para evitar veículos lotados, mas sabemos que aumentar a quantidades dos transportes só complicaria ainda mais os problemas de tráfico, para 59%, a informação sobre a localização dos ônibus em tempo real seria útil para evitar a aglomeração em pontos e paradas, essa abordagem é util para ter um controle maior do gerenciamento de tempo e viajem nos transportes públicos.**
+
+> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
+>
+> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
 >
 > **Orientações**:
 >
@@ -64,10 +68,7 @@ A documentação do projeto é estruturada da seguinte forma:
 
 ## Etapa de Entendimento
 >
->  **![Matriz CSD](images/image%20(1).png)**
->  **![Mapa de Stakeholders](images/image-1.png)**
->  **![Entrevistas Qualitativas](images/image-2.png)![Entrevista 2](images/image-3.png)**
->  **![Highlights de Pesquisa](images/image-4.png)![Highlight Entrevista 2](images/image-5.png)**
+> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
 
 ## Etapa de Definição
 
