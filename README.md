@@ -7,7 +7,6 @@ Estamos procurando possíveis soluções para diminuir a lotação nos transport
 
 * Pedro Henrique Cordeiro Quinellato
 * Guilherme Leão Rabelo
-* Nome completo do aluno 3
 
 ## Professores responsáveis
 
