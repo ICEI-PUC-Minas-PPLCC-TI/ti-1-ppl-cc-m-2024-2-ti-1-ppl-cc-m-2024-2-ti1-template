@@ -138,7 +138,6 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Repositório de código     | GitHub     |   https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-2024-2-g10-lotacao-em-transporte-publico.git    |
 | Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
 | Protótipo Interativo       | MarvelApp  | https://marvelapp.com/prototype/8j8gj03   |
-|                             |            |                                                    |
 
 ## Gerenciamento do Projeto
 
