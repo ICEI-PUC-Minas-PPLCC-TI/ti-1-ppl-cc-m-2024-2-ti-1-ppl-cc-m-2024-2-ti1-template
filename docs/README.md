@@ -46,21 +46,20 @@ A documentação do projeto é estruturada da seguinte forma:
 ## Etapa de Entendimento
 >
 > **![Matriz CSD](images/image%20(1).png)**
+> 
 > **![Mapa de Stakeholders](images/image-1.png)**
+> 
 > **![Entrevistas Qualitativas](images/image-2.png)![Entrevista 2](images/image-3.png)**
+> 
 > **![Highlights de Pesquisa](images/image-4.png)![Highlight Entrevista 2](images/image-5.png)**
 > 
 ## Etapa de Definição
 
 ### Personas
 
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
+![persona](images/persona.png)
+
+![persona](images/persona2.png)
 
 # Product Design
 
@@ -72,20 +71,15 @@ Com base na análise das personas foram identificadas as seguintes histórias de
 
 | EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
 | --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
+| Usuário do transporte público   | Rotas de ônibus alternativas | Não ficar desconfortável num ônibus lotado            |
+| Usuário do transporte público        | Rotas mais baratas      | Poder economizar na minha rotina diária |
+| Usuário do transporte público | Certeza sobre o horário em que os ônibus passam | Poder evitar imprevistos e atrasos |
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
+![proposta de valor](images/proposta.png)
 
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
-
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+![proposta de valor](images/proposta2.png)
 
 ## Requisitos
 
