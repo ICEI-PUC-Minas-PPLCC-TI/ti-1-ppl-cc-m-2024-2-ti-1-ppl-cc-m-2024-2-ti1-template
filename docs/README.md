@@ -126,7 +126,7 @@ Um menu de navegação com opções de interação com perfil do usuário, hist�
 
 # Metodologia
 
-Detalhes sobre a organização do grupo e o ferramental empregado.
+Usamos como base para o wireframe sites como uber e google maps, aa principal ferramenta para produzir o wireframe foi o figma e para o protótipo iterativo usei o marvel; as informações foram a maioria de conhecimento do dia a dia como passageiro de onibus mas também tiveram pesquisas para uma melhor apuração nas informações e ter elas da forma mais atualizadas; a parte de etapa de entendimento foi usada informações e imagens guardadas no miro do nosso grupo.
 
 ## Ferramentas
 
