@@ -7,9 +7,9 @@ Informações básicas do projeto.
 * **Membros da equipe:**
 
   * [João Paulo Cury Torres](https://github.com)
-  * [Leonardo Araújo Passos](https://github.com/LeoPassos98)
-  * [Marcos Vinícius Nunes Reis](https://github.com/marcosware)
-  * [Maria Luíza Manini de Oliveira](https://github.com/malumanini)
+  * [Leonardo Araujo Passos](https://github.com/LeoPassos98)
+  * [Marcos Vinicius Nunes Reis](https://github.com/marcosware)
+  * [Maria Luiza Manini de Oliveira](https://github.com/malumanini)
 
 A documentação do projeto é estruturada da seguinte forma:
 
@@ -242,6 +242,12 @@ Possui também um quadro de horários e dias mais vagos.
 
 Página com as informações do perfil do usuário. Permitindo a opção de alterá-las ou deletar a conta.
 
+**Suporte e Feedback**
+
+![Wireframe - Suporte e Feedback](images/wireframeSuporte.png)
+
+Página para que o usuário possa enviar uma mensagem de suporte ou feedback, contendo uma caixa de mensagem para o principal e uma menor para o assunto.
+
 ### User Flow
 
 ![Fluxo do usuário](images/userflow.jpg)
@@ -260,7 +266,7 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 | Ambiente                    | Plataforma | Link de acesso                                     |
 | --------------------------- | ---------- | -------------------------------------------------- |
-| Processo de Design Thinking | Miro       | [PPLCC-M - G5 - Dificuldade em otimizar o tempo](https://miro.com/app/board/uXjVKn9kuFg=/)        |
+| Processo de Design Thinking | Miro       | [PPLCC-M - G5 - Dificuldade em otimizar o tempo (antigo)](https://miro.com/app/board/uXjVKn9kuFg=/)        |
 | Repositório de código       | GitHub     | [ti-1-ppl-cc-m-2024-2-g15-dificuldade-em-otimizar-o-tempo-2](https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-2024-2-g15-dificuldade-em-otimizar-o-tempo-2) |
 | Protótipo Interativo        | Figma      | [Optimus Time](https://www.figma.com/proto/1sAB5LkR2KcbURoTHtTuOS/Optimus-Time?node-id=4368-321106&node-type=frame&t=TubGKx3PbLodYBNa-1&scaling=scale-down&content-scaling=fixed&page-id=1669%3A162202&starting-point-node-id=4368%3A321106&show-proto-sidebar=1) |
 | Comunicação e reunião       | Discord    | [Discord G15](https://discord.com/) |

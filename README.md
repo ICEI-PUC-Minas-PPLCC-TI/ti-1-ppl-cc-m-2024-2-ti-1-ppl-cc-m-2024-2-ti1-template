@@ -5,9 +5,10 @@ Nosso projeto tem como objetivo desenvolver uma plataforma online para otimizar 
 
 ## Alunos integrantes da equipe
 
-  * [Leonardo Araújo Passos](https://github.com/LeoPassos98)
-  * [Marcos Vinícius Nunes Reis](https://github.com/marcosware)
-  * [Maria Luíza Manini de Oliveira](https://github.com/malumanini)
+ * [João Paulo Cury Torres](https://github.com)
+  * [Leonardo Araujo Passos](https://github.com/LeoPassos98)
+  * [Marcos Vinicius Nunes Reis](https://github.com/marcosware)
+  * [Maria Luiza Manini de Oliveira](https://github.com/malumanini)
 
 ## Professores responsáveis
 
