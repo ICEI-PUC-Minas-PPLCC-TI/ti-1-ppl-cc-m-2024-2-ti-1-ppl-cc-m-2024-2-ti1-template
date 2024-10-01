@@ -236,17 +236,18 @@ Exibe diversos gráficos e informações conforme a produtividade e o tempo gast
 Página com listas de sugestões e dicas para o usuário com a opção de selecionar o tema.
 Possui também um quadro de horários e dias mais vagos.
 
+**Suporte e Feedback**
+
+![Wireframe - Suporte e Feedback](images/wireframeSuporte.png)
+
+Página para que o usuário possa enviar uma mensagem de suporte ou feedback, contendo uma caixa de mensagem para o principal e uma menor para o assunto.
+
 **Perfil**
 
 ![Wireframe - Perfil do usuário](images/wireframePerfil.png)
 
 Página com as informações do perfil do usuário. Permitindo a opção de alterá-las ou deletar a conta.
 
-**Suporte e Feedback**
-
-![Wireframe - Suporte e Feedback](images/wireframeSuporte.png)
-
-Página para que o usuário possa enviar uma mensagem de suporte ou feedback, contendo uma caixa de mensagem para o principal e uma menor para o assunto.
 
 ### User Flow
 
