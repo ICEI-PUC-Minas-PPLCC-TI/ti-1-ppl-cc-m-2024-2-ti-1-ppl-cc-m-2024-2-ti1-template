@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
@@ -28,4 +29,36 @@ keywords:
 repository-code: 
 license: CC-BY-4.0
 version: 1.0.0
+=======
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: 
+authors:
+  - family-names: 
+    given-names: 
+  - family-names: 
+    given-names: 
+  - family-names: 
+    given-names: 
+  - family-names: 
+    given-names: 
+  - family-names: 
+    given-names: 
+  - family-names: 
+    given-names:
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: 
+    given-names: 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: 
+    given-names: 
+keywords:
+  - 
+  - 
+repository-code: 
+license: CC-BY-4.0
+version: 1.0.0
+>>>>>>> 28203ff32e6dba5528cca7a3a34f7689df1c5f57
 date-released: 2022-07-14
