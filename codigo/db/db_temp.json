@@ -1,0 +1,50 @@
+{
+    "usuarios":
+      {
+        "ID": 1,
+        "nomeCompleto": "Nome de Exemplo",
+        "dataNascimento": "01-01-2000",
+        "email": "email@gmail.com",
+        "nomeUsuario": "Usuario de Exemplo",
+        "senha": "senhaExemplo123",
+        "tarefas":
+          {
+            "IDTarefa": 2,
+            "nomeTarefa": "tarefa_exemplo",
+            "categoria": [
+                "estudo",
+                "trabalho",
+                "lazer",
+                "outro"
+            ],
+            "prioridade": [
+                "alta",
+                "media",
+                "baixa"
+            ],
+            "data_inicio": "02-10-2024",
+            "data_fim": "03-10-2024",
+            "concluido": [
+                "N", "S"
+            ],
+            "tempoGasto": 4.6
+          },
+        "n_tarefas": 3,
+        "progresso": 70,
+        "dias_on": 3
+      },
+    "mensagens":
+      {
+        "ID": 1,
+        "email": "email@gmail.com",
+        "envio":
+         {
+            "tipo": [
+                "suporte",
+                "feedback"
+            ],
+            "assunto": "assunto exemplo",
+            "mensagem": "mensagem exemplo mensagem"
+         }
+       }
+  }
