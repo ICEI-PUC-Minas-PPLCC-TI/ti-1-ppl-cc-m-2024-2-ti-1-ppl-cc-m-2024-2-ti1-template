@@ -1,25 +1,52 @@
 {
-  "usuarios": [
-    {
-      "id": 1,
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
-    },
-    {
-      "id": 2,
-      "login": "user",
-      "senha": "123",
-      "nome": "Usuario Comum",
-      "email": "user@abc.com"
-    },
-    {
-      "login": "rommel",
-      "senha": "123",
-      "nome": "Rommel",
-      "email": "rommel@gmail.com",
-      "id": 3
-    }
-  ]
-}
+    "usuarios":
+      [
+        {
+          "id": 1,
+          "login": "admin",
+          "senha": "123",
+          "nome": "Administrador do Sistema",
+          "email": "admin@abc.com",
+          "n_tarefas": 3
+        },
+        {
+          "id": 2,
+          "login": "user",
+          "senha": "123",
+          "nome": "Usuario Comum",
+          "email": "user@abc.com",
+          "n_tarefas": 6
+        }
+      ],
+    "mensagens":
+      [
+        {
+          "id": 1,
+          "email": "email@gmail.com",
+          "tipo": "suporte",
+          "assunto": "assunto exemplo",
+          "mensagem": "mensagem lorem ipsum"
+        },
+        {
+          "id": 2,
+          "email": "email@gmail.com",
+          "tipo": "feedback",
+          "assunto": "blabla",
+          "mensagem": "opa"
+        }
+      ],
+      "tarefas":
+      [
+        {
+          "id": 1,
+          "nomeTarefa": "tarefa_exemplo",
+          "categoria": "Estudo",
+          "prioridade": 1,
+          "dataInicio": "01-10-2024",
+          "dataFim": "03-10-2024",
+          "dataConclusao": "02-10-2024",
+          "concluido": "N",
+          "tempoGasto": 4.6
+        }
+      ]
+  }
