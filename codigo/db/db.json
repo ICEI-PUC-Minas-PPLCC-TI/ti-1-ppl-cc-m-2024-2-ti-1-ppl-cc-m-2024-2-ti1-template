@@ -1,4 +1,21 @@
 {
+    "usuarios": [
+      {
+        "id": 1,
+        "login": "admin",
+        "senha": "123",
+        "nome": "Administrador",
+        "email": "admin@sistema.com"
+      },
+      {
+        "id": 2,
+        "login": "user",
+        "senha": "123",
+        "nome": "Usuário Comum",
+        "email": "user@sistema.com"
+      }
+    ],
+
   "linhas": [
     {
       "id": "0806",
