@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="../../assets/css/header_style.css" rel="stylesheet" type="text/css">
+    <title>Suporte</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm ms-5 ps-5 mt-2">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <span class="h3">
+                    <span style="color: #CC5B6F">O</span>PTIMUS
+                    <span style="color: #134263">T</span>IME
+                </span>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-justified w-100">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../dashboard/dashboard.html">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../cronograma/cronograma.html">Cronograma</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../analise/analise.html">Análise</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sugestoes/sugestoes.html">Sugestões</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contato</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../perfil/perfil.html">Perfil</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+
+    <main class="container w-100">
+        <div class="mb-4">
+            <h3 class="mt-5">Contato</h3>
+            <hr>
+        </div>
+        <div class="box border rounded-5 p-4">
+            <div class=" mb-4">
+                <h5><strong>Envie-nos uma mensagem!</strong></h5>
+            </div>
+
+            <form id="feedbackForm">
+                <fieldset class="row mb-3">
+                    <label for="tipoAjuda"
+                        class="col-12 col-md-2 col-form-label  text-md-start"><strong>Tipo:</strong></label>
+                    <div class="col-12 col-md-10 d-flex flex-column flex-md-row align-items-md-center gap-2">
+                        <div class="form-check me-md-3">
+                            <input class="form-check-input" type="radio" name="tipoAjuda" id="gridRadios1"
+                                value="suporte" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Suporte
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipoAjuda" id="gridRadios2"
+                                value="feedback">
+                            <label class="form-check-label" for="gridRadios2">
+                                Feedback
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="mb-5 row">
+                    <label for="assunto"
+                        class="col-12 col-md-2 col-form-label  text-md-start"><strong>Assunto:</strong></label>
+                    <div class="col-12 col-md-10">
+                        <input type="text" class="form-control rounded-4" id="assunto" name="assunto">
+                    </div>
+                </div>
+
+                <div class="mb-5 row">
+                    <label for="mensagem"
+                        class="col-12 col-md-2 col-form-label  text-md-start"><strong>Mensagem:</strong></label>
+                    <div class="col-12 col-md-10">
+                        <textarea class="form-control rounded-4" id="mensagem" rows="3" name="mensagem"></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3 d-flex justify-content-center">
+                    <button type="submit" class="btn botao_enviar py-2 px-4"><strong>Enviar<i
+                                class="bi bi-arrow-right ms-2 "></i></strong></button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "service_m6l7euo",
+            });
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
