@@ -22,6 +22,7 @@
                 .then (data => {
                     createBarChart(data);
                     calcConclusao(data);
+                    concluidasHoje(data);
                     // createPieChart(data);
                 })
                 .catch (error => {
@@ -32,24 +33,28 @@
         function createBarChart(data) {
             // ------------------------------------------------
             // Agrupa os dados por mês e categoria para serem utilizados no gráfico
-            const diaSemana = ["Dom","Seg","Ter","Qua","Qui","Sex","Sab"];
+            const diaSemana = ["Dom", "Seg","Ter","Qua","Qui","Sex","Sab"];
             // const dataConclusao = new Date(data.dataConclusao).getDay;
-            // const dias = Array.from(new Set(data.map(item => item.dataConclusao.getDay)));
-            const dias = Array.from(new Set(data.map(item => item.diaConclusao)));
+            const dataString = Array.from(data.map(item => new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd)));
+            const dias = Array.from(new Set(dataString.map(item => diaSemana[item.getDay()])));
+            // alert(dias);
+            // alert(dataString);
+            //const dias = Array.from(new Set(data.map(item => item.diaConclusao)));
             const categorias = Array.from(new Set(data.map(item => item.categoria)));
-        
-            const dadosPorDia = dias.map(diaConclusao => {
+            // alert(categorias);
+            const dadosPorDia = dias.map(diaCat => {
               const valoresPorCategoria = categorias.map(categoria => {
-                const valor = data.filter(item => item.diaConclusao === diaConclusao && item.categoria === categoria)
+                const valor = data.filter(item => diaSemana[new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd).getDay()]
+                 === diaCat && item.categoria === categoria)
                                    .reduce((acc, curr) => acc + curr.concluido, 0);
+                //alert(diaSemana[new Date(item.dataConclusao.yyyy + "-" + item.dataConclusao.mm + "-" + item.dataConclusao.dd).getDay()]);
                 return valor;
               });
               return {
-                diaConclusao: dias,
+                dataConclusao: dias,
                 valores: valoresPorCategoria
               };
             });
-        
             // ------------------------------------------------
             // Monta o gráfico utilizando a API do ChartJS
 
@@ -83,10 +88,10 @@
                     scales: {
                         y: {
                             beginAtZero: true,
-                            stacked: true
+                            stacked: false
                         },
                         x: {
-                            stacked: true
+                            stacked: false
                         }
                     }
               }
@@ -106,4 +111,30 @@
           barra.style.width = porcentagem + "%"; 
           const fracao = document.getElementById("fracaoProgresso");
           fracao.innerHTML = tarefasConcluidas + "/" + data.length;
+      }
+
+      function concluidasHoje(data) {
+        const dataString = Array.from(data.map(item => new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd)));
+        const hoje = document.getElementById("hojeProgresso");
+        let qtdConcluidas = hoje.innerHTML;
+        for(let i = 0; i < dataString.length; i++) {
+          if(dataString[i].toDateString() == new Date().toDateString()) {
+              qtdConcluidas++;
+          }
+        }
+        if(hoje.innerHTML == "") {
+          hoje.innerHTML = 0;
+        }
+        if(hoje.innerHTML < qtdConcluidas) {
+          hoje.innerHTML = qtdConcluidas;
+          hoje.innerHTML += "<img src='../../assets/images/blueTriangle.png'/>";
+        }
+        else if(hoje.innerHTML > qtdConcluidas) {
+          hoje.innerHTML = qtdConcluidas;
+          hoje.innerHTML += "<img src='../../assets/images/redTriangle.png'/>";
+
+        }
+        else{
+          hoje.innerHTML = qtdConcluidas;
+        }
       }
