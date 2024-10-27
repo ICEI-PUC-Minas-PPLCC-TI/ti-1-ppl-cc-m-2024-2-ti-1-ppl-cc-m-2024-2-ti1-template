@@ -61,7 +61,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 2,
@@ -87,7 +91,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 3,
@@ -113,7 +121,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 4,
@@ -139,7 +151,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 5,
@@ -165,7 +181,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 6,
@@ -191,7 +211,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         },
         {
           "id": 7,
@@ -217,7 +241,11 @@
             "yyyy": 2024
           },
           "concluido": 1,
-          "tempoGasto": 4.6
+          "tempoGasto":
+          {
+            "hr": 4,
+            "min": 2
+          }
         }
       ]
   }
