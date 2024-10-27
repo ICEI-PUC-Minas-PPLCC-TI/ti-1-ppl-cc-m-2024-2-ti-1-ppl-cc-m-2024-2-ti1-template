@@ -56,11 +56,10 @@
           }, 
           "dataConclusao":
           {
-            "dd": 7,
+            "dd": 27,
             "mm": 10,
             "yyyy": 2024
           },
-          "diaConclusao": "Seg",
           "concluido": 1,
           "tempoGasto": 4.6
         },
@@ -69,20 +68,50 @@
           "nomeTarefa": "tarefa_exemplo2",
           "categoria": "Trabalho",
           "prioridade": 2,
-          "dataInicio": "01-10-2024",
-          "dataFim": "03-10-2024",
-          "diaConclusao": "Seg",
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 20,
+            "mm": 10,
+            "yyyy": 2024
+          },
           "concluido": 1,
           "tempoGasto": 4.6
         },
         {
           "id": 3,
           "nomeTarefa": "tarefa_exemplo3",
-          "categoria": "Bazinga",
+          "categoria": "Lazer",
           "prioridade": 3,
-          "dataInicio": "01-10-2024",
-          "dataFim": "03-10-2024",
-          "diaConclusao": "Ter",
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 21,
+            "mm": 10,
+            "yyyy": 2024
+          },
           "concluido": 1,
           "tempoGasto": 4.6
         },
@@ -91,10 +120,103 @@
           "nomeTarefa": "tarefa_exemplo4",
           "categoria": "Trabalho",
           "prioridade": 1,
-          "dataInicio": "01-10-2024",
-          "dataFim": "03-10-2024",
-          "diaConclusao": "Qua",
-          "concluido": 0,
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 22,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "concluido": 1,
+          "tempoGasto": 4.6
+        },
+        {
+          "id": 5,
+          "nomeTarefa": "tarefa_exemplo5",
+          "categoria": "Lazer",
+          "prioridade": 3,
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 23,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "concluido": 1,
+          "tempoGasto": 4.6
+        },
+        {
+          "id": 6,
+          "nomeTarefa": "tarefa_exemplo6",
+          "categoria": "Trabalho",
+          "prioridade": 1,
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 24,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "concluido": 1,
+          "tempoGasto": 4.6
+        },
+        {
+          "id": 7,
+          "nomeTarefa": "tarefa_exemplo7",
+          "categoria": "Trabalho",
+          "prioridade": 1,
+          "dataInicio":
+          {
+            "dd": 1,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataFim":
+          {
+            "dd": 3,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "dataConclusao":
+          {
+            "dd": 24,
+            "mm": 10,
+            "yyyy": 2024
+          },
+          "concluido": 1,
           "tempoGasto": 4.6
         }
       ]
