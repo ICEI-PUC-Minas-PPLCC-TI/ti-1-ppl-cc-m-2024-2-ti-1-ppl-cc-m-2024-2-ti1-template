@@ -24,7 +24,7 @@ function setupSearch() {
 
     // Função para realizar a pesquisa
     function performSearch(query) {
-        fetch('/codigo/db/db.json')
+        fetch('../db/db.json')
             .then(response => response.json())
             .then(data => {
                 const lines = data.linhas.filter(linha => 
@@ -95,7 +95,7 @@ function loadBusLine(lineNumber) {
         window.initMap(); // Inicializa o mapa se necessário
     }
 
-    fetch('/codigo/db/db.json')
+    fetch('../db/db.json')
         .then(response => response.json())
         .then(data => {
             const points = data.pontos.filter(point => point.linha === lineNumber);
