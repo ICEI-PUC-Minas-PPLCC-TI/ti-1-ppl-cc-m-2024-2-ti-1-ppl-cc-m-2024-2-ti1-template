@@ -16,10 +16,17 @@
     
         // ------------------------------------------------
         // Aguarda o carregamento da página para montar o gráfico
+        var usuarioCorrente = {};
+
         window.onload = () => {
-            fetch ('/tarefas')
+          usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+          if (usuarioCorrenteJSON) {
+              usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
+          }
+            fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`)
                 .then (response => response.json())
                 .then (data => {
+                    alert(data);
                     createBarChart(data);
                     calcConclusao(data);
                     concluidasHoje(data);
