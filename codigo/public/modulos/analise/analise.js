@@ -116,25 +116,25 @@
       function concluidasHoje(data) {
         const dataString = Array.from(data.map(item => new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd)));
         const hoje = document.getElementById("hojeProgresso");
-        let qtdConcluidas = hoje.innerHTML;
+        if(hoje.textContent === '') {
+          hoje.textContent = 0;
+        }
+        let qtdConcluidas = Number(hoje.textContent);
         for(let i = 0; i < dataString.length; i++) {
           if(dataString[i].toDateString() == new Date().toDateString()) {
               qtdConcluidas++;
           }
         }
-        if(hoje.innerHTML == "") {
-          hoje.innerHTML = 0;
-        }
-        if(hoje.innerHTML < qtdConcluidas) {
-          hoje.innerHTML = qtdConcluidas;
+        if(Number(hoje.textContent) < qtdConcluidas) {
+          hoje.textContent = qtdConcluidas;
           hoje.innerHTML += "<img src='../../assets/images/blueTriangle.png'/>";
         }
-        else if(hoje.innerHTML > qtdConcluidas) {
-          hoje.innerHTML = qtdConcluidas;
+        else if(Number(hoje.textContent) > qtdConcluidas) {
+          hoje.textContent = qtdConcluidas;
           hoje.innerHTML += "<img src='../../assets/images/redTriangle.png'/>";
-
+          alert(qtdConcluidas);
         }
         else{
-          hoje.innerHTML = qtdConcluidas;
+          hoje.textContent = qtdConcluidas;
         }
       }
