@@ -1,0 +1,112 @@
+.navbar {
+  padding-block: .25rem;
+  border-bottom: currentColor solid 1px;
+  display: flex;
+  align-items: center;
+  font-size: var(--text-2xl);
+}
+
+.navbar__container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  max-width: 1280px;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.navbar__logo {
+  width: 128px;
+  padding: .125rem 1rem;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__link {
+  padding: .125rem 1rem;
+  border-radius: 1rem;
+  border-radius: .5rem;
+}
+
+.navbar__buttons {
+  display: flex;
+  align-items: center;
+  gap: .1rem;
+}
+
+#logout-button {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: .125rem 1rem;
+}
+
+.navbar__menu {
+  display: none;
+  position: relative;
+  width: calc(24px + 1rem);
+  aspect-ratio: 1;
+  padding: .5rem;
+  border-radius: .5rem;
+  background-color: var(--primary);
+}
+
+#navbar-menu-toggle {
+  z-index: 1;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  width: calc(24px + 1rem);
+  aspect-ratio: 1;
+  appearance: none;
+  background-image: url("../img/icon/menu-icon.svg");
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+#navbar-menu-toggle:checked {
+  background-image: url("../img/icon/close-icon.svg");
+}
+
+/* Mobile */
+@media (width <=620px) {
+  .navbar__list {
+    display: none;
+  }
+
+  #navbar-menu-toggle, .navbar__menu {
+    display: block;
+  }
+
+  #navbar-menu-toggle:checked~.navbar__list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    top: -.25rem;
+    right: 0;
+    height: 100svh;
+    justify-content: start;
+    padding: 4rem;
+    background-color: var(--background);
+    border: 1px solid currentColor;
+  }
+}

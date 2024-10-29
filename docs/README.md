@@ -1,117 +1,124 @@
 # Introdução
 
-Informações básicas do projeto.
-
-* **Projeto:** [NOME DO PROJETO]
-* **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+* **Projeto:** ***FinUp (Financial Upgrade)***
+* **Repositório GitHub:** [Grupo 6 - Falta de Gestão Financeira](https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-2024-2-g6-falta-de-gestao-financeira)
 * **Membros da equipe:**
-
-  * [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  * [Adriano Araújo Domingos dos Santos](https://github.com/adrianoaraujods)
+  * [Filipe Nery Rabelo](https://github.com/Filnr)
+  * [Gabriel Corrêa Costa](https://github.com/Gabriel00110)
+  * [Nikolas Petrick Castro Mendes](https://github.com/nickmiyah)
+  * [Rondinelly Martins Silva ](https://github.com/Rondi17)
+  * [Victor Rabelo Souza](https://github.com/VictorRS7)
 
 A documentação do projeto é estruturada da seguinte forma:
 
-1. Introdução
-2. Contexto
-3. Product Discovery
-4. Product Design
-5. Metodologia
-6. Solução
-7. Referências Bibliográficas
+- [Introdução](#introdução)
+- [Contexto](#contexto)
+  - [Problema](#problema)
+  - [Objetivos](#objetivos)
+  - [Justificativa](#justificativa)
+  - [Público-Alvo](#público-alvo)
+- [Product Discovery](#product-discovery)
+  - [Etapa de Entendimento](#etapa-de-entendimento)
+      - [Matriz CSD:](#matriz-csd)
+      - [Mapa de Stakeholders:](#mapa-de-stakeholders)
+      - [Entrevistas qualitativas](#entrevistas-qualitativas)
+      - [Highlight de pesquisa](#highlight-de-pesquisa)
+  - [Etapa de Definição](#etapa-de-definição)
+    - [Personas](#personas)
+      - [João Silva Pereira](#joão-silva-pereira)
+      - [Marcos Costa](#marcos-costa)
+      - [Anna Ribeiro](#anna-ribeiro)
+- [Product Design](#product-design)
+  - [Histórias de Usuários](#histórias-de-usuários)
+  - [Proposta de Valor](#proposta-de-valor)
+      - [Proposta de valor para Persona 1](#proposta-de-valor-para-persona-1)
+      - [Proposta de valor para Persona 2](#proposta-de-valor-para-persona-2)
+      - [Proposta de valor para Persona 3](#proposta-de-valor-para-persona-3)
+  - [Requisitos](#requisitos)
+    - [Requisitos Funcionais](#requisitos-funcionais)
+    - [Requisitos não Funcionais](#requisitos-não-funcionais)
+  - [Projeto de Interface](#projeto-de-interface)
+    - [Wireframes](#wireframes)
+      - [Login](#login)
+      - [Criar Conta](#criar-conta)
+      - [Registros](#registros)
+      - [Adicionar Registro](#adicionar-registro)
+      - [Criar Categoria](#criar-categoria)
+      - [NavBar Menu](#navbar-menu)
+      - [Evolução](#evolução)
+      - [Metas](#metas)
+      - [Criar Meta](#criar-meta)
+      - [Editar Meta](#editar-meta)
+    - [User Flow](#user-flow)
+    - [Protótipo Interativo](#protótipo-interativo)
+- [Metodologia](#metodologia)
+  - [Ferramentas](#ferramentas)
+  - [Gerenciamento do Projeto](#gerenciamento-do-projeto)
+- [Referências](#referências)
 
-✅ [Documentação de Design Thinking (MIRO)](files/processo-dt.pdf)
+[Documentação de Design Thinking (MIRO)](files/PPLCC-M%20-%20G6%20-%20Falta%20de%20gestão%20financeira.pdf)
 
 # Contexto
 
-Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
+A falta de gestão financeira pessoal é um problema crescente, especialmente com o aumento da acessibilidade ao crédito e ao consumo digital. Muitas pessoas enfrentam dificuldades para gerenciar suas finanças de forma adequada, o que resulta em gastos impulsivos, falta de planejamento e endividamento. Essa situação torna difícil para grande parte da população manter uma visão clara e realista de seus ganhos e despesas.
+
+
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+A falta de gestão financeira pessoal é um problema crescente, que afeta grande parte da população. Muitas pessoas têm dificuldade em controlar suas finanças, o que resulta em um desequilíbrio financeiro. Isso pode levar ao acúmulo de dívidas, compras impulsivas e gastos desnecessários, prejudicando o planejamento a longo prazo. A ausência de ferramentas acessíveis e de uma educação financeira eficiente contribui para que esses problemas se perpetuem, afetando diretamente a qualidade de vida e a estabilidade financeira das pessoas.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+Nosso objetivo é desenvolver um software educativo, com ferramentas que ensine o usuário a estebelecer uma educação financeira eficiente, identificando os principais pontos onde deve mudar, bem como estebelecer metas de economia e limite de gastos.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+Nós identificamos que grande parte das pessoas possuem dificuldade na gestão do próprio dinheiro. O uso do cartão de crédito aliado à práticas ruins, como inscrição em serviços de assinatura mensal(spotify, netflix, amazon, youtube premium, etc...) e também compras impulsivas de itens superfluos na internet, dentre outras, são fatores que dificultam a organização do dinheiro gasto. Isso tem como consequência o endividamento de muitas pessoas, que acabam vivendo no limite da sua renda.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+As pessoas que relatam ter maior dificuldade para gerir seu dinheiro, são os das [gerações Y e Z](https://pontaltech.com.br/blog/marketing/geracoes-x-y-z-alpha-beta/), visto que os mais velhos ainda utilizam bastante dinheiro físico, e tem maior rigor com seus gastos. Jovens e adultos entre 20 e 45 anos são os principais afetados por esse problema.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva quais são as pessoas que usarão a sua aplicação indicando os diferentes perfis. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+
 
 # Product Discovery
 
 ## Etapa de Entendimento
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
+#### Matriz CSD:
+![Matriz CSD](./images/MiroImages/MatrizCSD.png)
+#### Mapa de Stakeholders:
+![Mapa de Stakeholders](./images/MiroImages/MapaStakeholders.png)
+#### Entrevistas qualitativas
+![Entrevista Qualitativa](./images/MiroImages/EntrevistaQualitativa.png)
+#### Highlight de pesquisa
+![Highlights de Pesquisa](./images/MiroImages/HighlightsPesquisa.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> * **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> * **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> * **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> * **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
 
 ## Etapa de Definição
 
 ### Personas
 
-**✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
+#### João Silva Pereira
+![João Silva Pereira](./images/MiroImages/Persona1.png)
+<br>
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
+#### Marcos Costa
+![Marcos Costa](./images/MiroImages/Persona2.png)
+<br>
+
+#### Anna Ribeiro
+![Anna Ribeiro](./images/MiroImages/Persona3.png)
+
+
 
 # Product Design
 
@@ -121,31 +128,30 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
+| EU COMO... | QUERO/PRECISO ...        | PARA ...               |
 | --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
+| Endividado  | - Mais dinheiro <br> - Uma forma de organizar minhas finanças| - Quitar minhas dívidas <br> - Ter mais dinheiro <br> - Não me endividar             |
+| Consumista         | - Cancelar assinaturas de pouco uso <br> - Diminuir compras banais <br> - Criar limite de gastos no cartão     | - Diminuir gastos <br> - Ter autocontrole <br> - Diminuir a culpa de compras supérfluas |
+| Trabalhador  | - Mais dinheiro <br> - Diminuir gastos <br> - Não gastar além do meu salário | - Não endividar <br> - Construir uma reserva de emergência <br> - Ter uma boa saúde financeira |
+| Funcionário | - Aumento salarial <br> - Renda extra <br> - Reserva de emergência | - Ter estabilidade financeira <br> - Ajudar em casa |
+| Pai | - Estabelecer limites de compras para meus filhos <br> - Definir metas de investimentos e/ou economia <br> - Acompanhar melhor os gastos familiares | - Sobrar dinheiro para uma viagem <br> - Ficar mais tranquilo quanto às despezas |
+| Estudante | - Economizar | - O dinheiro não ser um obstáculo aos meus estudos  |
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
+#### Proposta de valor para Persona 1
+![Proposta de valor persona 1](./images/MiroImages/PropostaValorPersona1.png)
+<br>
 
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
+#### Proposta de valor para Persona 2
+![Proposta de valor persona 2](./images/MiroImages/ProportaValorPersona2.png)
+<br>
 
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+#### Proposta de valor para Persona 3
+![Proposta de valor persona 3](./images/MiroImages/PropostaValorPersona3.png)
+<br>
 
 ## Requisitos
 
@@ -155,31 +161,27 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 | ID     | Descrição do Requisito                                   | Prioridade |
 | ------ | ---------------------------------------------------------- | ---------- |
-| RF-001 | Permitir que o usuário cadastre tarefas ⚠️ EXEMPLO ⚠️ | ALTA       |
-| RF-002 | Emitir um relatório de tarefas no mês ⚠️ EXEMPLO ⚠️ | MÉDIA     |
+| RF-001 | Anotar receitas e despesas, com possibilidade de categorização. | ALTA       |
+| RF-002 | Visualizar todas as entradas e saídas registradas. | MÉDIA     |
+| RF-003 | Definir metas e objetivos de economias, podendo estipular a quantidade e a duração. | ALTA |
+| RF-004 | Definir um limite de gasto, e verificar se está dentro dele. | ALTA |
+| RF-005 | Projeções de valores economizados, um gráfico mostrando o valor que será economizado em relação ao tempo. | ALTA |
+| RF-006 | Comparação entre intervalos de tempo, meses, semanas e anos. | MÉDIA |
+| RF-007 | Área de ensino, disponibilizando conteúdo sobre economia e saúde financeira. | MÉDIA |
+| RF-008 | Definição de receitas e despesas recorrentes de forma automática. | ALTA |
+| RF-009 | Importar dados de planilhas (arquivos .csv) | MÉDIA |
+| RF-010 | Exportar dados para arquivo .csv | MÉDIA |
 
 ### Requisitos não Funcionais
 
-| ID      | Descrição do Requisito                                                              | Prioridade |
+| ID    | Descrição do Requisito                                                              | Prioridade |
 | ------- | ------------------------------------------------------------------------------------- | ---------- |
-| RNF-001 | O sistema deve ser responsivo para rodar em um dispositivos móvel ⚠️ EXEMPLO ⚠️ | MÉDIA     |
-| RNF-002 | Deve processar requisições do usuário em no máximo 3s ⚠️ EXEMPLO ⚠️          | BAIXA      |
+| RNF-001 | Sistema de conta, com acesso através de credenciais. | ALTA |
+| RNF-002 | Disponibilidade 24 horas, todos os dias da semana. | ALTA |
+| RNF-003 | Acesso gratuito, salvo recursos que indicam o contrário. | ALTA |
+| RNF-004 | Aplicação Web, possibilitando o uso em qualquer dispositivo e em qualquer hora e local com acesso à internet. | MÉDIA |
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Os requisitos de um projeto são classificados em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na plataforma (ex: cadastro de usuário).
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Orientações**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+
 
 ## Projeto de Interface
 
@@ -189,54 +191,50 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-**✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
+#### Login
+<img src='images/FigmaImages/LoginPage.jpg' alt='Login' width='300' height='550'>
 
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
+#### Criar Conta
+<img src='images/FigmaImages/CriarConta.jpg' alt='Criar conta' width='300' height='550'>
 
-Descrição para a tela XPTO
+#### Registros
+<img src='images/FigmaImages/Registros.jpg' alt='Registros' width='300' height='550'>
 
-![Exemplo de wireframe](images/exemplo-wireframe.png)
+#### Adicionar Registro
+<img src='images/FigmaImages/AdicionarRegistro.jpg' alt='Adicionar Registro' width='300' height='550'>
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
->
-> **Orientações**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
+#### Criar Categoria
+<img src='images/FigmaImages/CriarCategoria.jpg' alt='Criar categoria' width='300' height='550'>
+
+#### NavBar Menu
+<img src='images/FigmaImages/NavBar.jpg' alt='NavBar' width='300' height='550'>
+
+#### Evolução
+<img src='images/FigmaImages/Evolução.jpg' alt='Evolução' width='300' height='550'>
+
+#### Metas
+<img src='images/FigmaImages/Metas.jpg' alt='Metas' width='300' height='550'>
+
+#### Criar Meta
+<img src='images/FigmaImages/CriarMeta.jpg' alt='Criar Meta' width='300' height='550'>
+
+#### Editar Meta
+<img src='images/FigmaImages/EditarMeta.jpg' alt='Editar Meta' width='300' height='550'>
 
 ### User Flow
 
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
+![Userflow](images/FigmaImages/Userflow.png)
 
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
->
-> **Orientações**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools &amp; Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
 
 ### Protótipo Interativo
 
-**✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
-
-✅ [Protótipo Interativo (MarvelApp)](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false)  ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Um protótipo interativo apresenta o projeto de interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse lidando com o software pronto. Utilize as mesmas ferramentas de construção de wireframes para montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
+https://marvelapp.com/prototype/10ie6d3b/screen/95600300
 
 # Metodologia
 
-Detalhes sobre a organização do grupo e o ferramental empregado.
+Durante o desenvolvimento do projeto, utilizamos diversas ferramentas para otimizar o processo e garantir a eficiência das entregas. O Miro foi utilizado como plataforma principal para o processo de Design Thinking, permitindo a criação de fluxos de ideias e o desenvolvimento colaborativo de soluções. Para o versionamento e armazenamento do código, adotamos o GitHub, que proporcionou um ambiente centralizado e acessível para o gerenciamento do código-fonte e o acompanhamento das modificações feitas pela equipe. Na idealização e desenvolvimento da interface do usuário, empregamos o Figma, garantindo agilidade e facilidade durante o processo criativo. Por fim, o MarvelApp foi usado para a criação do protótipo interativo, permitindo que os usuários experimentassem a interface da aplicação antes de sua implementação completa.
+
 
 ## Ferramentas
 
@@ -244,154 +242,23 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 | Ambiente                    | Plataforma | Link de acesso                                     |
 | --------------------------- | ---------- | -------------------------------------------------- |
-| Processo de Design Thinking | Miro       | https://miro.com/XXXXXXX ⚠️ EXEMPLO ⚠️        |
-| Repositório de código     | GitHub     | https://github.com/XXXXXXX ⚠️ EXEMPLO ⚠️      |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
-| Protótipo Interativo       | MarvelApp  | https://marvelapp.com/XXXXXXX ⚠️ EXEMPLO ⚠️   |
-|                             |            |                                                    |
+| Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVKn-VohI=/           |
+| Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-PPLCC-TI/ti-1-ppl-cc-m-2024-2-g6-falta-de-gestao-financeira    |
+| Wireframes e Userflow         | Figma    | https://www.figma.com/design/iOqomTUN7adzGyKTcTEzQV/G6---Falta-de-Gest%C3%A3o-Financeira |
+| Protótipo Interativo       | MarvelApp  | https://marvelapp.com/prototype/10ie6d3b/screen/95600300   |
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Liste as ferramentas empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível. Inclua itens como: (1) Editor de código, (2) )ferramentas de comunicação, (3) )ferramentas de diagramação, (4) )plataformas de hospedagem, entre outras.
+
 
 ## Gerenciamento do Projeto
 
 Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
 
-![Exemplo de Kanban](images/exemplo-kanban.png)
+![Kanban](images/Kanban.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar  o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
->
-> **Orientações**:
->
-> - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-> - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
-> - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-
-# Solução Implementada
-
-Esta seção apresenta todos os detalhes da solução criada no projeto.
-
-## Vídeo do Projeto
-
-O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
-
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.
->
-> Inclua um link para o vídeo do projeto.
-
-## Funcionalidades
-
-Esta seção apresenta as funcionalidades da solução.Info
-
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
-
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
-
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
-* **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
-* **Tela da funcionalidade**:
-
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
-
-## Estruturas de Dados
-
-Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
-
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
-
-Contatos da aplicação
-
-```json
-  {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
-  
-```
-
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
-
-```json
-  {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
-  }
-```
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
-
-## Módulos e APIs
-
-Esta seção apresenta os módulos e APIs utilizados na solução
-
-**Images**:
-
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
-
-**Fonts:**
-
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
-
-**Scripts:**
-
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
 
 # Referências
+DANTAS, A. Estudo sobre o perfil socioeconômico de motoristas de aplicativo no Brasil. Revista Brasileira de Economia, v. 75, n. 2, p. 123-137, 2021.
 
-As referências utilizadas no trabalho foram:
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Pesquisa de Orçamentos Familiares: Despesas familiares e endividamento. Brasília: IBGE, 2020. Disponível em: https://www.ibge.gov.br. Acesso em: 18 set. 2024.
 
-* SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
-> **Orientações**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+SERVIÇO DE PROTEÇÃO AO CRÉDITO (SPC). Estudo sobre hábitos de consumo e controle financeiro. São Paulo: SPC, 2019.

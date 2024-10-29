@@ -1,0 +1,135 @@
+.card>.form {
+  background: var(--card);
+  border: 1px solid currentColor;
+  border-radius: 1rem;
+  max-width: 680px;
+  margin-inline: auto;
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form__header {
+  text-align: center;
+}
+
+.form__field {
+  display: grid;
+  gap: .5rem;
+}
+
+.form__field__label {
+  font-size: var(--text-xl);
+}
+
+.form__field__input {
+  padding-block: .25rem;
+  padding-inline: .5rem;
+  font-size: var(--text-lg);
+}
+
+.form__field__tab {
+  background-color: var(--input);
+  border-radius: .5rem;
+  display: flex;
+}
+
+.form__field__tab__item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+}
+
+.form__field__tab__label {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-radius: .25rem;
+  padding: .25rem;
+  font-size: var(--text-lg);
+  cursor: pointer;
+}
+
+.form__field__tab__input:checked~.form__field__tab__label {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.form__field__tab__input {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.form__field__icons {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: .25rem;
+}
+
+.form__field__icons__item {
+  aspect-ratio: 1;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 1px solid var(--foreground);
+  border-radius: .5rem;
+  background-color: var(--input);
+}
+
+.form__field__icons__item:has(.form__field__icons__item__input:checked) {
+  filter: invert(1);
+}
+
+.form__field__icons__item__input {
+  position: absolute;
+  appearance: none;
+  inset: 0;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.form__field__icons__item__image {
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+}
+
+.form__footer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form__cancel {
+  background: transparent;
+  width: 100%;
+  max-width: 256px;
+  margin-inline: auto;
+  padding: .5rem;
+}
+
+.form__submit {
+  background: var(--foreground);
+  color: var(--background);
+  width: 100%;
+  max-width: 256px;
+  padding: .5rem;
+}

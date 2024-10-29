@@ -1,0 +1,27 @@
+.popup {
+  background-color: var(--card);
+  color: var(--foreground);
+  border-width: 1px;
+  width: 100%;
+  max-width: 680px;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+.open-popup {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: .5rem 1rem;
+}
+
+.close-popup--icon {
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  background-color: transparent;
+}
+
+.close-popup>svg {
+  color: var(--foreground);
+
+}

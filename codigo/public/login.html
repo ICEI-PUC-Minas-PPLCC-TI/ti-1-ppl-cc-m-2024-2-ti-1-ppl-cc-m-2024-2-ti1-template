@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinUp | Login</title>
+    <link rel="stylesheet" href="assets/css/globals.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/form.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <nav class="navbar__container">
+        <a class="navbar__logo" href="/">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m13.11 7.664 1.78 2.672" />
+            <path d="m14.162 12.788-3.324 1.424" />
+            <path d="m20 4-6.06 1.515" />
+            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+            <circle cx="12" cy="6" r="2" />
+            <circle cx="16" cy="12" r="2" />
+            <circle cx="9" cy="15" r="2" />
+          </svg>
+
+          <span>FinUp</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="card">
+        <!-- Login Form -->
+        <form class="form" id="login-form" method="post">
+          <div class="form__header">
+            <h2>Entre com sua conta!</h2>
+          </div>
+          <div class="form__field">
+            <label class="form__field__label" for="email">Email</label>
+            <input
+              class="form__field__input"
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <div class="form__field">
+            <label class="form__field__label" for="password">Senha</label>
+            <input
+              class="form__field__input"
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <div class="form__footer">
+            <a href="./register.html">Ainda não possui conta? Crie</a>
+
+            <button class="form__submit" type="submit">Entre</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Javascript -->
+    <script src="assets/js/login.js" type="module"></script>
+  </body>
+</html>

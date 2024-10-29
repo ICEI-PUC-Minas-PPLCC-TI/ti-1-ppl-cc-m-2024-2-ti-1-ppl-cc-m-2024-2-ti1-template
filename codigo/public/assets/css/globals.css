@@ -1,0 +1,169 @@
+:root {
+  --background: #060806;
+  --foreground: #FAFAFA;
+  --card: #1f1f1f;
+  --input: #0D0F0D;
+  --primary: #6D9588;
+  --background-destructive: #7F1D1D;
+  --foreground-destructive: #FF4B4B;
+  --background-success: #1D6B09;
+  --foreground-success: #A1FF57;
+
+  --text-xs: 0.750rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.000rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.250rem;
+  --text-2xl: 1.50rem;
+  --text-3xl: 2.00rem;
+  --text-4xl: 3.00rem;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.5;
+  font-family: ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100svh;
+  margin: 0;
+  line-height: inherit;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  background-color: var(--input);
+  border: none;
+  border-radius: .5rem;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend, dialog {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+:disabled {
+  cursor: default;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+[hidden] {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
