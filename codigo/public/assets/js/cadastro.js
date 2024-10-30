@@ -10,6 +10,7 @@ let isPointsVisible = false;
 
 
 
+
 // Function to save temporary point
 async function salvarPonto(evento) {
     evento.preventDefault();
@@ -63,38 +64,6 @@ function atualizarListaPontosTemporarios() {
     `).join('');
 }
 
-async function confirmarPontos() {
-    if (tempPoints.length === 0) {
-        alert('Não há pontos para confirmar');
-        return;
-    }
-
-    try {
-        for (const ponto of tempPoints) {
-            const { tempId, ...pontoData } = ponto; // Remove tempId before sending
-            const response = await fetch(`${API_URL}/pontos`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(pontoData)
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-        }
-
-        alert(`${tempPoints.length} pontos salvos com sucesso!`);
-        tempPoints = []; // Clear temporary points
-        atualizarListaPontosTemporarios();
-        atualizarInterface();
-    } catch (error) {
-        console.error('Erro ao salvar pontos:', error);
-        alert('Erro ao salvar pontos. Por favor, tente novamente.');
-    }
-}
-
 // Add keyboard shortcuts for faster input
 document.addEventListener('DOMContentLoaded', () => {
     const latitudeInput = document.getElementById('latitude');
@@ -115,16 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     longitudeInput?.addEventListener('keypress', handleEnterKey);
 });
 
-// Function to edit temporary point
-function editarPontoTemp(tempId, campo, novoValor) {
-    const ponto = tempPoints.find(p => p.tempId === tempId);
-    if (ponto && validarCoordenada(novoValor)) {
-        ponto[campo] = parseFloat(novoValor);
-    } else {
-        alert('Valor inválido para coordenada');
-        atualizarListaPontosTemporarios(); // Refresh to show original value
-    }
-}
 
 // Function to remove temporary point
 function removerPontoTemp(tempId) {
@@ -169,6 +128,23 @@ async function fetchPontos() {
 }
 
 // Funções CRUD
+// Função auxiliar para obter o próximo ID
+async function getNextId(collection) {
+    try {
+        const response = await fetch(`${API_URL}/${collection}`);
+        const items = await response.json();
+        
+        if (items.length === 0) return "1";
+        
+        const maxId = Math.max(...items.map(item => parseInt(item.id)));
+        return (maxId + 1).toString();
+    } catch (error) {
+        console.error(`Erro ao obter próximo ID para ${collection}:`, error);
+        return "1";
+    }
+}
+
+// Função atualizada para cadastrar linha com ID sequencial
 async function cadastrarLinha(evento) {
     evento.preventDefault();
     const currentTab = getCurrentTab();
@@ -182,12 +158,15 @@ async function cadastrarLinha(evento) {
     }
 
     try {
+        const nextId = await getNextId('linhas');
+        
         const response = await fetch(`${API_URL}/linhas`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                id: nextId,
                 numero,
                 tipo
             })
@@ -198,13 +177,14 @@ async function cadastrarLinha(evento) {
         alert('Linha cadastrada com sucesso!');
         evento.target.reset();
         await atualizarInterface();
-        showTab(currentTab); // Volta para a aba que estava antes
+        showTab(currentTab);
     } catch (error) {
         console.error('Erro ao cadastrar linha:', error);
         alert('Erro ao cadastrar linha. Por favor, tente novamente.');
     }
 }
 
+// Função atualizada para confirmar pontos com IDs sequenciais
 async function confirmarPontos() {
     const currentTab = getCurrentTab();
     
@@ -215,13 +195,18 @@ async function confirmarPontos() {
 
     try {
         for (const ponto of tempPoints) {
+            const nextId = await getNextId('pontos');
             const { tempId, ...pontoData } = ponto;
+            
             const response = await fetch(`${API_URL}/pontos`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(pontoData)
+                body: JSON.stringify({
+                    id: nextId,
+                    ...pontoData
+                })
             });
 
             if (!response.ok) {
@@ -233,7 +218,7 @@ async function confirmarPontos() {
         tempPoints = [];
         atualizarListaPontosTemporarios();
         await atualizarInterface();
-        showTab(currentTab); // Volta para a aba que estava antes
+        showTab(currentTab);
     } catch (error) {
         console.error('Erro ao salvar pontos:', error);
         alert('Erro ao salvar pontos. Por favor, tente novamente.');
@@ -386,25 +371,9 @@ async function visualizarPontos(linhaNumero) {
                 <h4>Ponto ${index + 1}</h4>
                 <p>Latitude: ${ponto.latitude}</p>
                 <p>Longitude: ${ponto.longitude}</p>
-            </div>
-            <div class="point-actions">
-                <button onclick="removerPonto(${ponto.id})" class="delete-btn">Remover</button>
-            </div>
+                <br>
         </div>
     `).join('');
-}
-
-async function removerPonto(id) {
-    if (!confirm('Tem certeza que deseja remover este ponto?')) return;
-
-    try {
-        await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'DELETE'
-        });
-        await atualizarInterface();
-    } catch (error) {
-        console.error('Erro ao remover ponto:', error);
-    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -416,79 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pontoForm = document.getElementById('ponto-form');
     if (pontoForm) pontoForm.addEventListener('submit', cadastrarPonto);
 });
-
-async function atualizarInterface() {
-    // Atualizar lista de linhas no select
-    const linhaSelect = document.getElementById('linha-select');
-    if (linhaSelect) {
-        const linhas = await fetchLinhas();
-        linhaSelect.innerHTML = '<option value="">Selecione uma linha</option>';
-        linhas.forEach(linha => {
-            linhaSelect.innerHTML += `<option value="${linha.numero}">${linha.numero} - ${linha.tipo}</option>`;
-        });
-
-    }
-
-    // Atualizar tabela de linhas
-    const tableContainer = document.querySelector('.table-container');
-    if (tableContainer) {
-        const linhas = await fetchLinhas();
-        const pontos = await fetchPontos();
-
-        let html = `
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Número</th>
-                        <th>Tipo</th>
-                        <th>Pontos</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
-
-        for (const linha of linhas) {
-            const pontosDaLinha = pontos.filter(p => p.linha === linha.numero);
-            html += `
-                <tr data-linha-id="${linha.id}">
-                    <td>${linha.numero}</td>
-                    <td>${linha.tipo}</td>
-                    <td>${pontosDaLinha.length}</td>
-                    <td>
-                        <button onclick="visualizarPontos('${linha.numero}')" class="view-btn">Ver Pontos</button>
-                        <button onclick="editarLinha('${linha.id}', '${linha.numero}', '${linha.tipo}')" class="edit-btn">Editar</button>
-                        <button onclick="removerLinha('${linha.id}')" class="delete-btn">Remover</button>
-                    </td>
-                </tr>
-            `;
-        }
-
-        html += '</tbody></table>';
-        tableContainer.innerHTML = html;
-    }
-
-    // Atualizar lista de pontos quando uma linha está selecionada
-    const pointsList = document.getElementById('points-list');
-    if (pointsList && window.selectedLine) {
-        const pontos = await fetchPontos();
-        const pontosDaLinha = pontos.filter(ponto => ponto.linha === window.selectedLine);
-
-        pointsList.innerHTML = pontosDaLinha.map((ponto, index) => `
-            <div class="point-item" data-ponto-id="${ponto.id}">
-                <div class="point-info">
-                    <h4>Ponto ${index + 1}</h4>
-                    <p>Latitude: ${ponto.latitude}</p>
-                    <p>Longitude: ${ponto.longitude}</p>
-                </div>
-                <div class="point-actions">
-                    <button onclick="editarPonto(${ponto.id}, ${ponto.latitude}, ${ponto.longitude})" class="edit-btn">Editar</button>
-                    <button onclick="removerPonto(${ponto.id})" class="delete-btn">Remover</button>
-                </div>
-            </div>
-        `).join('');
-    }
-}
 
 // Função atualizada para edição de linha
 async function editarLinha(id, numeroAtual, tipoAtual) {
@@ -575,290 +471,11 @@ async function removerLinha(id) {
     }
 }
 
-// Nova função para editar ponto
-async function editarPonto(id, latitudeAtual, longitudeAtual) {
-    const novaLatitude = prompt('Nova latitude:', latitudeAtual);
-    if (!novaLatitude) return;
 
-    const novaLongitude = prompt('Nova longitude:', longitudeAtual);
-    if (!novaLongitude) return;
-
-    if (!validarCoordenada(novaLatitude) || !validarCoordenada(novaLongitude)) {
-        alert('Coordenadas inválidas. Por favor, insira valores numéricos válidos.');
-        return;
-    }
-
-    try {
-        const response = await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                latitude: parseFloat(novaLatitude),
-                longitude: parseFloat(novaLongitude)
-            })
-        });
-
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-        alert('Ponto atualizado com sucesso!');
-        await atualizarInterface();
-    } catch (error) {
-        console.error('Erro ao editar ponto:', error);
-        alert('Erro ao editar ponto. Por favor, tente novamente.');
-    }
-}
-
-// ... (manter código anterior até a função visualizarPontos)
-
-async function visualizarPontos(linhaNumero) {
-    const pointsList = document.getElementById('points-list');
-    if (!pointsList) return;
-
-    if (window.selectedLine === linhaNumero && isPointsVisible) {
-        // Hide points
-        window.selectedLine = null;
-        isPointsVisible = false;
-        pointsList.innerHTML = '';
-        return;
-    }
-
-    // Show points
-    window.selectedLine = linhaNumero;
-    isPointsVisible = true;
-    const pontos = await fetchPontos();
-    const pontosDaLinha = pontos.filter(ponto => ponto.linha === linhaNumero);
-
-    pointsList.innerHTML = pontosDaLinha.map((ponto, index) => `
-        <div class="point-item" data-ponto-id="${ponto.id}">
-            <div class="point-info">
-                <h4>Ponto ${index + 1}</h4>
-                <p>Latitude: ${ponto.latitude}</p>
-                <p>Longitude: ${ponto.longitude}</p>
-            </div>
-            <div class="point-actions">
-                <button onclick="editarPontoVisualizado(${ponto.id})" class="edit-btn">Editar</button>
-                <button onclick="removerPontoVisualizado(${ponto.id})" class="delete-btn">Remover</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Nova função para editar ponto na visualização
-async function editarPontoVisualizado(id) {
-    try {
-        const response = await fetch(`${API_URL}/pontos/${id}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const ponto = await response.json();
-        
-        const novaLatitude = prompt('Nova latitude:', ponto.latitude);
-        if (novaLatitude === null) return;
-        
-        const novaLongitude = prompt('Nova longitude:', ponto.longitude);
-        if (novaLongitude === null) return;
-
-        if (!validarCoordenada(novaLatitude) || !validarCoordenada(novaLongitude)) {
-            alert('Por favor, insira coordenadas válidas');
-            return;
-        }
-
-        const updateResponse = await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                ...ponto,
-                latitude: parseFloat(novaLatitude),
-                longitude: parseFloat(novaLongitude)
-            })
-        });
-
-        if (!updateResponse.ok) throw new Error(`HTTP error! status: ${updateResponse.status}`);
-
-        alert('Ponto atualizado com sucesso!');
-        
-        if (window.selectedLine) {
-            await visualizarPontos(window.selectedLine);
-        }
-    } catch (error) {
-        console.error('Erro ao editar ponto:', error);
-        alert('Erro ao editar ponto. Por favor, tente novamente.');
-    }
-}
-
-// Atualizar a função removerPonto original para usar a nova função
-async function removerPonto(id) {
-    await removerPontoVisualizado(id);
-}
-
-
-// Nova função para remover ponto na visualização
-async function removerPontoVisualizado(id) {
-    if (!confirm('Tem certeza que deseja remover este ponto?')) {
-        return;
-    }
-
-    try {
-        const response = await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'DELETE'
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        alert('Ponto removido com sucesso!');
-        
-        // Atualizar a visualização
-        if (window.selectedLine) {
-            await visualizarPontos(window.selectedLine);
-        }
-    } catch (error) {
-        console.error('Erro ao remover ponto:', error);
-        alert('Erro ao remover ponto. Por favor, tente novamente.');
-    }
-}
-
-// Função para editar um ponto na visualização
-async function editarPontoVisualizado(id) {
-    try {
-        const response = await fetch(`${API_URL}/pontos/${id}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const ponto = await response.json();
-        
-        const novaLatitude = prompt('Nova latitude:', ponto.latitude);
-        if (novaLatitude === null) return;
-        
-        const novaLongitude = prompt('Nova longitude:', ponto.longitude);
-        if (novaLongitude === null) return;
-
-        if (!validarCoordenada(novaLatitude) || !validarCoordenada(novaLongitude)) {
-            alert('Por favor, insira coordenadas válidas');
-            return;
-        }
-
-        const updateResponse = await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                ...ponto,
-                latitude: parseFloat(novaLatitude),
-                longitude: parseFloat(novaLongitude)
-            })
-        });
-
-        if (!updateResponse.ok) throw new Error(`HTTP error! status: ${updateResponse.status}`);
-
-        alert('Ponto atualizado com sucesso!');
-        await visualizarPontos(window.selectedLine);
-        await atualizarInterface();
-    } catch (error) {
-        console.error('Erro ao editar ponto:', error);
-        alert('Erro ao editar ponto. Por favor, tente novamente.');
-    }
-}
 
 function getCurrentTab() {
     const activeTab = document.querySelector('.tab-content.active');
     return activeTab ? activeTab.id : 'linhas';
-}
-
-// Função para visualizar pontos de uma linha específica
-async function visualizarPontos(linhaNumero) {
-    const pointsList = document.getElementById('points-list');
-    if (!pointsList) return;
-
-    try {
-        // Toggle visibility
-        if (window.selectedLine === linhaNumero && isPointsVisible) {
-            window.selectedLine = null;
-            isPointsVisible = false;
-            pointsList.innerHTML = '';
-            return;
-        }
-
-        window.selectedLine = linhaNumero;
-        isPointsVisible = true;
-
-        const pontos = await fetchPontos();
-        const pontosDaLinha = pontos.filter(ponto => ponto.linha === linhaNumero);
-
-        pointsList.innerHTML = `
-            <div class="points-container">
-                <h3>Pontos da Linha ${linhaNumero}</h3>
-                ${pontosDaLinha.map((ponto, index) => `
-                    <div class="point-card" data-ponto-id="${ponto.id}">
-                        <div class="point-info">
-                            <span class="point-number">Ponto ${index + 1}</span>
-                            <div class="coordinates">
-                                <span>Latitude: ${ponto.latitude}</span>
-                                <span>Longitude: ${ponto.longitude}</span>
-                            </div>
-                        </div>
-                        <div class="point-actions">
-                            <button onclick="editarPontoVisualizado(${ponto.id})" class="edit-btn">
-                                Editar
-                            </button>
-                            <button onclick="removerPontoVisualizado(${ponto.id})" class="delete-btn">
-                                Remover
-                            </button>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    } catch (error) {
-        console.error('Erro ao visualizar pontos:', error);
-        alert('Erro ao carregar pontos. Por favor, tente novamente.');
-    }
-}
-
-// Função para editar um ponto na visualização
-async function editarPontoVisualizado(id) {
-    try {
-        const response = await fetch(`${API_URL}/pontos/${id}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const ponto = await response.json();
-        
-        const novaLatitude = prompt('Nova latitude:', ponto.latitude);
-        if (novaLatitude === null) return;
-        
-        const novaLongitude = prompt('Nova longitude:', ponto.longitude);
-        if (novaLongitude === null) return;
-
-        if (!validarCoordenada(novaLatitude) || !validarCoordenada(novaLongitude)) {
-            alert('Por favor, insira coordenadas válidas');
-            return;
-        }
-
-        const updateResponse = await fetch(`${API_URL}/pontos/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                ...ponto,
-                latitude: parseFloat(novaLatitude),
-                longitude: parseFloat(novaLongitude)
-            })
-        });
-
-        if (!updateResponse.ok) throw new Error(`HTTP error! status: ${updateResponse.status}`);
-
-        alert('Ponto atualizado com sucesso!');
-        await visualizarPontos(window.selectedLine);
-        await atualizarInterface();
-    } catch (error) {
-        console.error('Erro ao editar ponto:', error);
-        alert('Erro ao editar ponto. Por favor, tente novamente.');
-    }
 }
 
 // Função auxiliar para validar coordenadas
@@ -871,3 +488,11 @@ function getCurrentTab() {
     const activeTab = document.querySelector('.tab-content.active');
     return activeTab ? activeTab.id : 'linhas';
 }
+
+const Linha = sequelize.define('Linha', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    }
+})
