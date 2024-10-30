@@ -44,7 +44,6 @@
                 .then (data => {
                     createBarChart(data);
                     calcConclusao(data);
-                    concluidasHoje(data);
                     
                     // createPieChart(data);
                 })
@@ -59,6 +58,7 @@
           .then (response => response.json())
           .then (data => {
           tempoGasto(data)
+          concluidasHoje(data)
           })
           .catch (error => {
             alert ('Erro ao obet dados do servidro:' + error.message);
