@@ -17,8 +17,24 @@
         // ------------------------------------------------
         // Aguarda o carregamento da página para montar o gráfico
         var usuarioCorrente = {};
+        var numeroSemana = 0;
 
-        window.onload = () => {
+        function passarSemana(num) {
+          numeroSemana += 7 * num;
+          if(Chart.getChart(document.getElementById('divBarChart'))) {
+            Chart.getChart(document.getElementById('divBarChart'))?.destroy()
+          }
+          execucao();
+        }
+
+        function execucao() {
+          if(numeroSemana == 0) {
+            document.getElementById("botaoPassada").disabled = false;
+            document.getElementById("botaoAtual").disabled = true;
+          } else {
+            document.getElementById("botaoPassada").disabled = true;
+            document.getElementById("botaoAtual").disabled = false;
+          }
           usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
           if (usuarioCorrenteJSON) {
               usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
@@ -26,11 +42,10 @@
             fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`)
                 .then (response => response.json())
                 .then (data => {
-                    alert(data);
                     createBarChart(data);
                     calcConclusao(data);
                     concluidasHoje(data);
-                    tempoGasto(data);
+                    
                     // createPieChart(data);
                 })
                 .catch (error => {
@@ -38,21 +53,52 @@
                 })
         }
 
+        window.onload = () => {
+          execucao();
+          fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`)
+          .then (response => response.json())
+          .then (data => {
+          tempoGasto(data)
+          })
+          .catch (error => {
+            alert ('Erro ao obet dados do servidro:' + error.message);
+          })
+        }
+
         function createBarChart(data) {
             // ------------------------------------------------
             // Agrupa os dados por mês e categoria para serem utilizados no gráfico
+            
             const diaSemana = ["Dom", "Seg","Ter","Qua","Qui","Sex","Sab"];
+
+            // Obter a data atual
+            const hoje = new Date();
+            
+            // Calcular o início da semana atual (domingo) e o início da semana passada
+            const inicioSemanaAtual = new Date(hoje);
+            inicioSemanaAtual.setDate(hoje.getDate() - hoje.getDay());
+
+            const inicioSemanaPassada = new Date(inicioSemanaAtual);
+            inicioSemanaPassada.setDate(inicioSemanaAtual.getDate() - numeroSemana);
+
+            const filtroSemana = data.filter(item => {
+              const dataConclusao = new Date(item.dataConclusao.yyyy, item.dataConclusao.mm - 1, item.dataConclusao.dd);
+              if(numeroSemana != 0) {
+                return dataConclusao < inicioSemanaAtual;
+              } else {
+                return dataConclusao >= inicioSemanaPassada;
+              }
+            });
             // const dataConclusao = new Date(data.dataConclusao).getDay;
-            const dataString = Array.from(data.map(item => new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd)));
-            const dias = Array.from(new Set(dataString.map(item => diaSemana[item.getDay()])));
-            // alert(dias);
-            // alert(dataString);
-            //const dias = Array.from(new Set(data.map(item => item.diaConclusao)));
+            const dataString = Array.from(filtroSemana.map(item => new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd)));
+            // const dias = Array.from(new Set(dataString.map(item => diaSemana[item.getDay()])));
+            const dias = diaSemana.slice();
+            
             const categorias = Array.from(new Set(data.map(item => item.categoria)));
-            // alert(categorias);
+            
             const dadosPorDia = dias.map(diaCat => {
               const valoresPorCategoria = categorias.map(categoria => {
-                const valor = data.filter(item => diaSemana[new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd).getDay()]
+                const valor = filtroSemana.filter(item => diaSemana[new Date(item.dataConclusao.yyyy + "/" + item.dataConclusao.mm + "/" + item.dataConclusao.dd).getDay()]
                  === diaCat && item.categoria === categoria)
                                    .reduce((acc, curr) => acc + curr.concluido, 0);
                 //alert(diaSemana[new Date(item.dataConclusao.yyyy + "-" + item.dataConclusao.mm + "-" + item.dataConclusao.dd).getDay()]);
