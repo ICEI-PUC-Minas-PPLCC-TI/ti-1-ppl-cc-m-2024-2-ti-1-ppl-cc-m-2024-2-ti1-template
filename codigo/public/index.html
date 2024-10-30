@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="map.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen" style="background-color: var(--background);">
     <!-- Navbar -->
@@ -154,7 +153,7 @@
                     // ----------------------------------------------
                     // Cria uma estrutura de dados com informações das unidades da PUC Minas 
                     function carregaDados () {
-                        fetch ('../db/db.json')
+                        fetch ('http://localhost:3000/pontos')
                             .then (response => response.json())
                             .then (data => {
                                 montarMapa (data);
@@ -168,11 +167,6 @@
                     // Cria um mapa com a API do Mapbox para a div map e 
                     // adiciona marcadores para cada um dos locais obtidos via JSONServer
                     function montarMapa (dadosLocais) {
-                        // ----------------------------------------------
-                        // IMPORTANTE: Crie uma conta no Mapbox e obtenha uma accessToken, 
-                        // em seguida, coloque na linha abaixo
-                        // ----------------------------------------------
-                        // mapboxgl.accessToken = 'COLOQUE_SUA_TOKEN_DO_MAPBOX_AQUI';
                         mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
                         map = new mapboxgl.Map({
                             container: 'map',
@@ -185,10 +179,17 @@
                         // Adiciona marcadores para os locais obtidos via JSONServer
                         dadosLocais.forEach((pontos) => {
                             let popup = new mapboxgl.Popup({ offset: 25 })
-                                .setHTML(`<h3><a href="${uni.url}" target="_blank">${uni.descricao}</a></h3><br>
-                                        ${uni.endereco} <br> ${uni.cidade}`);
-                            const marker = new mapboxgl.Marker({ color: uni.cor })
-                                .setLngLat(uni.latlong)
+                            
+                            //teoricamente passa por cada item da database em pontos e converte os dois valores separados de latitude e longitude em um só, utilizavel pelo mapbox
+                            let pairedCoordinates = dadosLocais.map(item => ({
+                                id: item.id,
+                                coordinates: [item.longitude, item.latitude]
+                            }));
+
+                            console.log(pairedCoordinates);
+                            
+                            const marker = new mapboxgl.Marker()
+                                .setLngLat(pairedCoordinates.coordinates)
                                 .setPopup(popup)
                                 .addTo(map);     
                         })
