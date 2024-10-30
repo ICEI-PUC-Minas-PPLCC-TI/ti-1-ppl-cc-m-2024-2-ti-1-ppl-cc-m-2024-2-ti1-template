@@ -1,78 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="./assets/js/login.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="banner">
-        <img src="./assets/images/banner_ti.png" alt="" />
-      </div>
-      <div class="barra-info">
-        <nav class="menu">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Sobre nós</a></li>
-          </ul>
-        </nav>
-        <div class="dados-usuario">
-          <span id="userInfo"></span>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PontoCerto - Sistema de Rastreamento de Ônibus</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="../public/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/assets/css/pesquisa.css">
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="map.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen" style="background-color: var(--background);">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="logo-container">
+                    <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Fundo circular -->
+                        <circle cx="20" cy="20" r="20" fill="var(--primary)" fill-opacity="0.1"/>
+                        
+                        <!-- Corpo do ônibus -->
+                        <rect x="8" y="14" width="24" height="12" rx="2" fill="var(--primary)"/>
+                        
+                        <!-- Janelas -->
+                        <rect x="10" y="16" width="4" height="4" rx="1" fill="var(--background)"/>
+                        <rect x="16" y="16" width="4" height="4" rx="1" fill="var(--background)"/>
+                        <rect x="22" y="16" width="4" height="4" rx="1" fill="var(--background)"/>
+                        
+                        <!-- Rodas -->
+                        <circle cx="12" cy="28" r="3" fill="var(--accent)"/>
+                        <circle cx="28" cy="28" r="3" fill="var(--accent)"/>
+                        
+                        <!-- Linha de movimento -->
+                        <path d="M5 32C8 28 32 28 35 32" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+                    </svg>
+                    <span class="logo-text">PontoCerto</span>
+                    
+                </div>
+                
+                <div class="flex items-center">
+                    <a href="../public/modulos/Cadastro-Ônibus/cadastro.html" class="px-6 py-3 rounded-xl hover:bg-blue-50 flex items-center transition-all duration-300" style="color: var(--primary);">
+                        <span class="font-semibold">Área Administrativa</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
+    </nav>
+
+    <!-- Main Content -->
     <main>
-        <h3>Boas vindas</h3>
-        <p>Sejam bem-vindos à home-page do projeto de TI 1 - Trabalho
-        Interdisciplinar</p>
-        <p>Esse conteúdo que você está lendo foi criado para exemplificar como
-        criar o seu site integrado com o ambiente de login e o back end que
-        utiliza o JSON Server.</p>
-        <p>Ao criar o seu site, você deve adaptar esse código para sua neessidade ou começar do zero, excluindo todo esse conteúdo.
-        </p>
+        <!-- Search Section -->
+        <div class="card p-8 mb-10">
+            <div class="flex items-center">
+                <div class="search-container flex-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="search-icon h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                    </svg>
+                    <input type="text" id="busSearch" class="search-input w-full" placeholder="Busque sua linha de ônibus...">
+                    <div id="searchResults" class="absolute w-full bg-white mt-2 rounded-xl shadow-lg hidden"></div>
+                </div>
+                <button class="ml-6 primary-button text-white rounded-xl">
+                    Buscar
+                </button>
+            </div>
+        </div>
 
-        <h3>Arquivos do site (Front End)</h3>
-        <p>Para montar seu site, edite os arquivos existentes e crie novos arquivos na pasta <code>public</code> que mantem todos os arquivos da parte de Front End do site, a interface que é vista pelo usuário no navegador.</p>
+        <!-- Quick Access Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            <!-- Card 1 -->
+            <div class="card p-6 quick-access-card">
+                <div class="flex items-center">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="var(--accent)">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg" style="color: var(--primary);">Linhas Próximas</h3>
+                        <p style="color: var(--text);">Encontre ônibus perto de você</p>
+                    </div>
+                </div>
+            </div>
 
-        <p>Nesta pasta <code>public</code>, sugerimos que você organize os arquivos do seu site da seguinte maneira:</p>
-        <ul>
-            <li><strong>Pasta <code>assets</code></strong>: os arquivos de formatação (CSS), os scripts (JS), as imagens utilizadas no site (JPG, PNG, GIF, SVG, etc), fontes (TTF) e outros arquivos gerais utilizados por todo o site.</li>
-            <li><strong>Pasta <code>modulos</code></strong>: os arquivos utilizados na implementação das funcionalidades do site. Separe uma sub-pasta para cada novo módulo ou funcionalidade. Pode também ser utilizado para dividir o trabalho de cada membro do grupo.</li>
-            <li><strong>Arquivo <code>index.html</code></strong>: arquivo que representa a "home page" do site.</li>
-        </ul>
+            <!-- Card 2 -->
+            <div class="card p-6 quick-access-card">
+                <div class="flex items-center">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="var(--accent)">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg" style="color: var(--primary);">Horários</h3>
+                        <p style="color: var(--text);">Consulte a programação</p>
+                    </div>
+                </div>
+            </div>
 
-        <h3>Módulo de Login</h3>
-        <p>O módulo de login de usuário traz uma funcionalidade completa de registro de usuários e validação de login e senha.</p>
-        <h4>Integração do site com módulo de Login</h4>
-        <p>Para utilizar o módulo de login, basta incluir o script na sua página colocando a seguinte tag no HEAD</p>
-        <pre>&lt;script src="./assets/js/login.js"&gt&lt;script&gt;</pre>
-        <p>Ao incluir o script de login na sua página, caso o usuário ainda não tenha efetuado login, ao acessar a home-page do site, o navegador será direcionado para o formulário de <strong>Identificação de Usuário</strong>. Se o usuário informar corretamente o login e a senha, o navegador será direcionado para a Home-Page.</p>
-        <h4>Sessão do usuário logado</h4>
-        <p>Assim que o usuário se identifica e acessa a parte privada do site, o módulo de login cria uma chave do sessionStorage do navegador com o título <strong>usuarioCorrente</strong> e cujo conteúdo é um objeto com os atributos: id, nome, login, senha e email. </p>
-        <h4>Base de dados de usuários</h4>
-        <p>Inicialmente o módulo de login é configurado com dois usuários: </p>
-        <ul>
-            <li>admin - Senha: 123</li>
-            <li>user - Senha: 123</li>
-        </ul>
+            <!-- Card 3 -->
+            <div class="card p-6 quick-access-card">
+                <div class="flex items-center">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="var(--accent)">
+                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7h-3v7h3V7z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg" style="color: var(--primary);">Minhas Linhas</h3>
+                        <p style="color: var(--text);">Rotas favoritas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h3>Servidor Web e API baseada no JSON Server (Back end)</h3>
-        <p>O ambiente de trabalho disponibilizado para suportar o Trabalho Interdisciplinar 1 é baseado no Node.js. A aplicação de back end utiliza o módulo JSON Server para criar um Servidor Web que prove duas estruturas separadas:
-        <ul>
-            <li><strong>Arquivos estáticos (Pasta <code>public</code>)</strong>: da acesso aos arquivos utilizados no front end (HTML, CSS e JavaScript).</li>
-            <li><strong>API RESTful (pasta <code>db</code>)</strong>: uma interface para acesso aos dados definidos no arquivo db.json.</li>
-        </ul></p>
+        <!-- Map Section -->
+        <div class="card">
+            <div class="p-6 border-b" style="border-color: var(--secondary);">
+                <h2 class="text-2xl font-bold" style="color: var(--primary);">Mapa de Rastreamento</h2>
+            </div>
+            <div class="map-placeholder p-10">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+                <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+                <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet'>
 
-        <h4>Arquitetura do site</h4>
-        <p>A imagem que se segue apresenta a arquitetura desse ambiente, mostrando as duas refletindo as pastas desse ambiente.</p>
-        <p><img class="img-fluid d-block w-75 m-auto" src="./assets/images/servidor.png" alt=""></p>
+                <!-- DIV que receberá o mapa -->
+                <div id="map"></div>
 
-        <h4>Arquivo db.json</h4>
-        <p>O arquivo JSON utilizado para definição das estruturas dos dados providos pela aplicação é localizado na pasta db e tem um formato como o mostrado no exemplo da figura a seguir. Esse arquivo define uma estrutura hipotética de contatos que descreve itens com os seguintes atributos: <code>id</code>, <code>nome</code> e <code>cidade</code>. para o JSON Server, é fundamental que toda estrutura tenha um atributo de identificador de nome <code>id</code>.</p>
-        <p><img class="img-fluid d-block w-50 m-auto" src="./assets/images/arquivo_json.png" alt=""></p>
+                <script>
+                    // ----------------------------------------------
+                    // Define o ponto central do mapa como a cidade de Belo Horizonte - MG
+                    const centralLatLong= [-43.9397233,-19.9332786]
+
+                    // ----------------------------------------------
+                    // Variável global para o mapa
+                    let map;
+
+                    // ----------------------------------------------
+                    // Carrega os dados das unidades da PUC Minas ao carregar a página 
+                    window.onload = () => {
+                        carregaDados();
+                    }
+
+                    // ----------------------------------------------
+                    // Cria uma estrutura de dados com informações das unidades da PUC Minas 
+                    function carregaDados () {
+                        fetch ('../db/db.json')
+                            .then (response => response.json())
+                            .then (data => {
+                                montarMapa (data);
+                            })
+                            .catch (error => {
+                                alert ('Erro ao obter dados do servidor:' + error.message);
+                            })
+                    }
+
+                    // ----------------------------------------------
+                    // Cria um mapa com a API do Mapbox para a div map e 
+                    // adiciona marcadores para cada um dos locais obtidos via JSONServer
+                    function montarMapa (dadosLocais) {
+                        // ----------------------------------------------
+                        // IMPORTANTE: Crie uma conta no Mapbox e obtenha uma accessToken, 
+                        // em seguida, coloque na linha abaixo
+                        // ----------------------------------------------
+                        // mapboxgl.accessToken = 'COLOQUE_SUA_TOKEN_DO_MAPBOX_AQUI';
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
+                        map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v12',
+                            center: centralLatLong,
+                            zoom: 9
+                        });
+
+                        // ----------------------------------------------
+                        // Adiciona marcadores para os locais obtidos via JSONServer
+                        dadosLocais.forEach((pontos) => {
+                            let popup = new mapboxgl.Popup({ offset: 25 })
+                                .setHTML(`<h3><a href="${uni.url}" target="_blank">${uni.descricao}</a></h3><br>
+                                        ${uni.endereco} <br> ${uni.cidade}`);
+                            const marker = new mapboxgl.Marker({ color: uni.cor })
+                                .setLngLat(uni.latlong)
+                                .setPopup(popup)
+                                .addTo(map);     
+                        })
+
+                        // obtem a localização do usuário e adiciona um marcador no mapa
+                        navigator.geolocation.getCurrentPosition (processarGetCurrentPosition, () => { alert ('Erro ao obter localização.') })
+                    }
+
+                        // ----------------------------------------------
+                        // Adiciona um marcador com nossa posição no mapa
+                        function processarGetCurrentPosition (local) {
+                        let popup = new mapboxgl.Popup({ offset: 25 })
+                            .setHTML(`<h3> Estou aqui!!! </h3>`);
+                        const marker = new mapboxgl.Marker({ color: 'yellow' })
+                            .setLngLat([local.coords.longitude, local.coords.latitude])
+                            .setPopup(popup)
+                            .addTo(map);  
+                        }
+
+                </script>
+                
+            </div>
+        </div>
     </main>
-  </body>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16" style="border-color: var(--secondary);">
+        <div class="container mx-auto px-8 py-8">
+            <p class="text-center text-sm" style="color: var(--text);">© 2024 PontoCerto - Sistema de Monitoramento de Ônibus</p>
+        </div>
+    </footer>
+
+<script src="../public/assets/js/pesquisa.js"></script>
+</body>
 </html>
