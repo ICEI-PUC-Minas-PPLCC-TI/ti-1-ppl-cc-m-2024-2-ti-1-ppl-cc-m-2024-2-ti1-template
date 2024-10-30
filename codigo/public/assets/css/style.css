@@ -69,10 +69,11 @@
 div#map{
     background: #f8f9fa;
     border: 2px dashed #dee2e6;
+    margin: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 800px;
-    width: 100%;
+    min-height: 80vh;
+    width: 92%;
     height: 100%;
 }

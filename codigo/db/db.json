@@ -20,6 +20,11 @@
       "id": "1",
       "numero": "3502",
       "tipo": "Comum"
+    },
+    {
+      "id": "2",
+      "numero": "355",
+      "tipo": "Comum"
     }
   ],
   "pontos": [
@@ -376,6 +381,12 @@
       "linha": "3502",
       "latitude": -19.84917882356584,
       "longitude": -43.91242029184448
+    },
+    {
+      "id": "60",
+      "linha": "355",
+      "latitude": 2323,
+      "longitude": 44
     }
   ]
 }

@@ -90,11 +90,6 @@ function setupSearch() {
 
 // Função para carregar linha selecionada
 function loadBusLine(lineNumber) {
-    // Verificar se a função do mapa existe
-    if (typeof window.initMap === 'function') {
-        window.initMap(); // Inicializa o mapa se necessário
-    }
-
     fetch('../db/db.json')
         .then(response => response.json())
         .then(data => {
@@ -102,10 +97,36 @@ function loadBusLine(lineNumber) {
             
             if (points.length > 0) {
                 // Aqui você pode implementar a lógica para exibir a linha no mapa
-                console.log(`Linha ${lineNumber} selecionada com ${points.length} pontos`);
+                // ---------------------------------------------
+                    new montarMapa(data)
+                    function montarMapa (dadosLocais) {
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
+                        map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v12',
+                            center: centralLatLong,
+                            zoom: 9
+                        })
+                    let popup = new mapboxgl.Popup({ offset: 25 })
+                            
+                            //teoricamente passa por cada item da database em pontos e converte os dois valores separados de latitude e longitude em um só, utilizavel pelo mapbox
+                            let pairedCoordinates = points.map(item => ({
+                                id: item.id,
+                                coordinates: [item.longitude, item.latitude]
+                            }))
+
+                            
+                    for (let index = 0; index < pairedCoordinates.length; index++) {
+                        const marker = new mapboxgl.Marker()
+                            .setLngLat(pairedCoordinates[index].coordinates)
+                            .setPopup(popup)
+                            .addTo(map);
+                    }
+                    
+                        
                 // Limpar resultados da pesquisa
                 document.getElementById('searchResults').classList.add('hidden');
-            } else {
+            }} else {
                 console.log(`Nenhum ponto encontrado para a linha ${lineNumber}`);
             }
         })

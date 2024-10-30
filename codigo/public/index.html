@@ -148,8 +148,37 @@
                     // ----------------------------------------------
                     // Carrega os dados 
                     window.onload = () => {
-                        carregaDados();
+                        carregaMapaVazio();
                     }
+
+                    // -----
+                    // função que carrega um mapa vazio
+
+                    function carregaMapaVazio() {
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
+                        map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v12',
+                            center: centralLatLong,
+                            zoom: 9,
+                    })}
+
+                    
+                    // obtem a localização do usuário
+                    navigator.geolocation.getCurrentPosition (processarGetCurrentPosition, () => { alert ('Erro ao obter localização.') })
+                        
+                    // ----------------------------------------------
+                    // Adiciona um marcador com nossa posição no mapa
+                    function processarGetCurrentPosition (local) {
+                    let popup = new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(`<h3> Sua posição </h3>`);
+                    const marker = new mapboxgl.Marker({ color: 'yellow' })
+                        .setLngLat([local.coords.longitude, local.coords.latitude])
+                        .setPopup(popup)
+                        .addTo(map);
+                    }
+
+            
 
                     // ----------------------------------------------
                     // Cria uma estrutura de dados com informações
@@ -197,22 +226,7 @@
                                 .addTo(map);
                                 
                             }
-                        })
-
-                        // obtem a localização do usuário e adiciona um marcador no mapa
-                        navigator.geolocation.getCurrentPosition (processarGetCurrentPosition, () => { alert ('Erro ao obter localização.') })
-                    }
-
-                        // ----------------------------------------------
-                        // Adiciona um marcador com nossa posição no mapa
-                        function processarGetCurrentPosition (local) {
-                        let popup = new mapboxgl.Popup({ offset: 25 })
-                            .setHTML(`<h3> Sua posição </h3>`);
-                        const marker = new mapboxgl.Marker({ color: 'yellow' })
-                            .setLngLat([local.coords.longitude, local.coords.latitude])
-                            .setPopup(popup)
-                            .addTo(map);  
-                        }
+                        })}
 
                 </script>
                 
