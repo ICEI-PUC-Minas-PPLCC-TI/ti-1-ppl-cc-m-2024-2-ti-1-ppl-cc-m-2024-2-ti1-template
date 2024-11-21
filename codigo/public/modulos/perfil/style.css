@@ -2,6 +2,10 @@
     color: white;
     background-color: #134263;
     padding: 5px 18px 5px 18px;
+    font-size: 15px;
+}
+.botao_deletar {
+    font-size: 15px;
 }
 .box {
     background-color: #fcfcfc;
