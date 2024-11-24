@@ -11,12 +11,14 @@
       "id": 2,
       "login": "user",
       "senha": "123",
+      "dataNascimento": "28/09/2004",
       "nome": "Usuario Comum",
       "email": "user@abc.com"
     },
     {
       "login": "user2",
       "senha": "123",
+      "dataNascimento": "28/09/2004",
       "nome": "Usuário da Silva",
       "email": "usuariolopes@email.com",
       "id": 3
