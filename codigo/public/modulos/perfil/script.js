@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = '/usuarios'; 
 
-    sessionStorage.setItem('userId', 1); // Armazenando o valor do ID do usuário (no caso, o ID 1)
-
+    sessionStorage.setItem('userId', 1); 
 
     const fullNameInput = document.getElementById("fullName");
     const birthDateInput = document.getElementById("birthDate");
@@ -40,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
-                console.log(data); // Verifique os dados no console
+                console.log(data); 
                 if (data && data.length > 0) {
-                    const user = data[userId]; // Assume o primeiro usuário para demonstração
+                    const user = data[userId];
                     fullNameInput.value = user.nome;
                     birthDateInput.value = user.dataNascimento;
                     emailInput.value = user.email;
@@ -59,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
    
-
-    // Função para alternar a edição de informações pessoais
     editPersonalInfoButton.addEventListener("click", function () {
         fullNameInput.disabled = !fullNameInput.disabled;
         birthDateInput.disabled = !birthDateInput.disabled;
@@ -76,8 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             email: emailInput.value,
         };
 
-        // Atualiza as informações pessoais
-        fetch(`${apiUrl}/${userId}`, {  // Agora usamos o userId
+        fetch(`${apiUrl}/${userId}`, {  
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -99,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Função para alternar a edição de informações de acesso
     editLoginInfoButton.addEventListener("click", function () {
         usernameInput.disabled = !usernameInput.disabled;
         passwordInput.disabled = !passwordInput.disabled;
@@ -113,8 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             senha: passwordInput.value,
         };
 
-        // Atualiza as informações de login
-        fetch(`${apiUrl}/${userId}`, {  // Agora usamos o userId
+        fetch(`${apiUrl}/${userId}`, {  
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -135,9 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Função para excluir a conta
     deleteAccountButton.addEventListener("click", function () {
-        // Exclui a conta
+
         fetch(`${apiUrl}/${userId}`, {
             method: 'DELETE',
             headers: {
@@ -148,6 +141,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(() => {
             displayMessage("Conta removida com sucesso");
+            setTimeout(() => {
+            window.location.href = "http://localhost:3000/modulos/login/login.html";
+        }, 2000);
         })
         .catch(error => {
             console.error('Erro ao remover conta:', error);
@@ -155,6 +151,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Carrega o perfil ao iniciar a página
     loadProfile();
 });
