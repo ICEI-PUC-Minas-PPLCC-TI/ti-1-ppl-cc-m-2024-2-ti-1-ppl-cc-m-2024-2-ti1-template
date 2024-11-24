@@ -1,24 +1,25 @@
 {
   "usuarios": [
     {
-      "nome": "Usuario Comum",
-      "dataNascimento": "1995-05-10",
-      "email": "user@abc.com",
-      "id": 1
+      "id": 1,
+      "login": "admin",
+      "senha": "123",
+      "nome": "Administrador do Sistema",
+      "email": "admin@abc.com"
     },
     {
       "id": 2,
       "login": "user",
       "senha": "123",
+      "dataNascimento": "28/09/2004",
       "nome": "Usuario Comum",
-      "dataNascimento": "1995-05-10",
       "email": "user@abc.com"
     },
     {
       "login": "user2",
       "senha": "123",
+      "dataNascimento": "28/09/2004",
       "nome": "Usuário da Silva",
-      "dataNascimento": "1995-05-10",
       "email": "usuariolopes@email.com",
       "id": 3
     }
@@ -628,8 +629,6 @@
       },
       "id": 22
     }
-<<<<<<< HEAD
-=======
   ],
   "cronograma": [
     {
@@ -687,6 +686,5 @@
         }
       }
     }
->>>>>>> f0bc93c081083d5d5b9b96eabdf0e3c44cfde22d
   ]
 }
