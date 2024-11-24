@@ -1,25 +1,24 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "nome": "Usuario Comum",
+      "dataNascimento": "1995-05-10",
+      "email": "user@abc.com",
+      "id": 1
     },
     {
       "id": 2,
       "login": "user",
       "senha": "123",
-      "dataNascimento": "28/09/2004",
       "nome": "Usuario Comum",
+      "dataNascimento": "1995-05-10",
       "email": "user@abc.com"
     },
     {
       "login": "user2",
       "senha": "123",
-      "dataNascimento": "28/09/2004",
       "nome": "Usuário da Silva",
+      "dataNascimento": "1995-05-10",
       "email": "usuariolopes@email.com",
       "id": 3
     }
@@ -581,53 +580,6 @@
       "tempoGasto": {
         "hr": 5,
         "min": 0
-      }
-    }
-  ],
-  "cronograma": [
-    {
-      "id": 2,
-      "tarefas": {
-        "ids": [1, 2, 3],
-        "horarios":
-          {
-            "inicio":[
-              {
-                "hr": 2,
-                "min": 15
-              },
-              {
-                "hr": 4,
-                "min": 30
-              },
-              {
-                "hr": 8,
-                "min": 45
-              }
-            ],
-            "fim":[
-              {
-                "hr": 8,
-                "min": 45
-              },
-              {
-                "hr": 6,
-                "min": 30
-              },
-              {
-                "hr": 10,
-                "min": 45
-              }
-            ],
-            "diasSemana":[
-              {
-                "dias": [1,2,3]
-              },
-              {
-                "dias": [2,4]
-              }
-            ]
-          }
       }
     }
   ]

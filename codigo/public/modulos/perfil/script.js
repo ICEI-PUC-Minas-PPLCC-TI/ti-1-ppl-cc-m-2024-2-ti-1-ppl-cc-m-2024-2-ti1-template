@@ -23,7 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const msg = document.getElementById('msg');
         msg.innerHTML = `<div class="alert alert-warning">${mensagem}</div>`;
     }
+
     const userId = sessionStorage.getItem('userId');
+    if (!userId) {
+        console.error('Erro: userId não encontrado no sessionStorage.');
+    }
+
 
 
     function loadProfile() {
