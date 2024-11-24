@@ -1,0 +1,169 @@
+/**
+ * Definição do fundo padrão da página
+ */
+body {
+    background-color: #f8f9fa;
+}
+
+/**
+ * Estilização do cabeçalho principal
+ * Usa gradiente linear para criar efeito visual atraente
+ */
+.page-header {
+    background: linear-gradient(135deg, #134263, #CC5B6F);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+/**
+ * Elementos tipográficos do cabeçalho
+ */
+.page-header h1, .page-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+/**
+ * Estilização dos cards
+ * Design minimalista com sombras suaves
+ */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+/**
+ * Cabeçalho dos cards
+ * Usa borda sutil para separação visual
+ */
+.card-header {
+    background: white;
+    border-bottom: 2px solid #f0f0f0;
+    padding: 1rem;
+}
+
+/**
+ * Título dos cards
+ * Usa a cor primária do tema
+ */
+.card-title {
+    color: #134263;
+    font-weight: 600;
+}
+
+/**
+ * Estilização dos elementos de formulário
+ * Inclui estados hover e focus
+ */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 0.75rem;
+}
+
+/**
+ * Botão primário
+ * Inclui animação no hover
+ */
+.btn-primary {
+    background-color: #134263;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/**
+ * Estilos específicos para os itens de tarefa
+ * Inclui diferentes estados de prioridade
+ */
+.task-item {
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid transparent;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/**
+ * Elementos internos das tarefas
+ * Título, categoria e datas
+ */
+.task-title, .task-category, .task-dates {
+    font-weight: 600;
+    color: #134263;
+    background: #e9ecef;
+    color: #134263;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+/**
+ * Área de ações das tarefas
+ * Botões de editar e remover
+ */
+.task-actions .btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+}
+
+/**
+ * Personalização do componente FullCalendar
+ * Adapta o calendário ao tema do aplicativo
+ */
+.fc {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/**
+ * Estilos específicos do cabeçalho do calendário
+ */
+.fc-toolbar-title {
+    color: #134263;
+    font-size: 1.2rem !important;
+    font-weight: 600;
+}
+
+/**
+ * Botões do calendário
+ * Mantém consistência com o tema
+ */
+.fc-button {
+    background-color: #134263 !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 6px !important;
+}
+
+/**
+ * Destaque do dia atual no calendário
+ */
+.fc-day-today {
+    background-color: rgba(204, 91, 111, 0.1) !important;
+}
+
+/**
+ * Responsividade
+ * Ajustes para telas menores
+ */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 1.5rem 0;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+}

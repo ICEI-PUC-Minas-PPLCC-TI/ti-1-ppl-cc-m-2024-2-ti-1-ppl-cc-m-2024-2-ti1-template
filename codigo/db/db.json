@@ -582,52 +582,108 @@
         "hr": 5,
         "min": 0
       }
+    },
+    {
+      "id_usuario": 1,
+      "nomeTarefa": "sd",
+      "categoria": "sdf",
+      "prioridade": 2,
+      "dataInicio": {
+        "dd": 31,
+        "mm": 10,
+        "yyyy": 2024
+      },
+      "dataFim": {
+        "dd": 3,
+        "mm": 12,
+        "yyyy": 2024
+      },
+      "dataConclusao": null,
+      "concluido": 0,
+      "tempoGasto": {
+        "hr": 0,
+        "min": 0
+      },
+      "id": 21
+    },
+    {
+      "id_usuario": 1,
+      "nomeTarefa": "s",
+      "categoria": "s",
+      "prioridade": 1,
+      "dataInicio": {
+        "dd": 4,
+        "mm": 11,
+        "yyyy": 2024
+      },
+      "dataFim": {
+        "dd": 16,
+        "mm": 11,
+        "yyyy": 2024
+      },
+      "dataConclusao": null,
+      "concluido": 0,
+      "tempoGasto": {
+        "hr": 0,
+        "min": 0
+      },
+      "id": 22
     }
   ],
   "cronograma": [
     {
       "id": 2,
       "tarefas": {
-        "ids": [1, 2, 3],
-        "horarios":
-          {
-            "inicio":[
-              {
-                "hr": 2,
-                "min": 15
-              },
-              {
-                "hr": 4,
-                "min": 30
-              },
-              {
-                "hr": 8,
-                "min": 45
-              }
-            ],
-            "fim":[
-              {
-                "hr": 8,
-                "min": 45
-              },
-              {
-                "hr": 6,
-                "min": 30
-              },
-              {
-                "hr": 10,
-                "min": 45
-              }
-            ],
-            "diasSemana":[
-              {
-                "dias": [1,2,3]
-              },
-              {
-                "dias": [2,4]
-              }
-            ]
-          }
+        "ids": [
+          1,
+          2,
+          3
+        ],
+        "horarios": {
+          "inicio": [
+            {
+              "hr": 2,
+              "min": 15
+            },
+            {
+              "hr": 4,
+              "min": 30
+            },
+            {
+              "hr": 8,
+              "min": 45
+            }
+          ],
+          "fim": [
+            {
+              "hr": 8,
+              "min": 45
+            },
+            {
+              "hr": 6,
+              "min": 30
+            },
+            {
+              "hr": 10,
+              "min": 45
+            }
+          ],
+          "diasSemana": [
+            {
+              "dias": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "dias": [
+                2,
+                4
+              ]
+            }
+          ]
+        }
       }
     }
   ]
