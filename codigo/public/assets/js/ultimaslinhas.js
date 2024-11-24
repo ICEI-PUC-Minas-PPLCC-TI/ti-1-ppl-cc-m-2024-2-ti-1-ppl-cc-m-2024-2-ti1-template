@@ -1,0 +1,3 @@
+function carregaLinhas(){
+    fetch('/linhas')
+}

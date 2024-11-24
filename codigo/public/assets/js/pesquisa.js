@@ -42,7 +42,10 @@ function setupSearch() {
                     
                     searchResults.innerHTML = resultsHTML;
                     searchResults.classList.remove('hidden');
-                } else {
+
+                } 
+                
+                else {
                     searchResults.innerHTML = `
                         <div class="p-4 text-gray-600">
                             Nenhuma linha encontrada
@@ -94,10 +97,27 @@ function loadBusLine(lineNumber) {
         .then(response => response.json())
         .then(data => {
             const points = data.pontos.filter(point => point.linha === lineNumber);
-            
+
+            //funçao que salva uma linha num array na db
+            function salvaLinhas(lineNumber){
+                if (!data.linhasSalvas) {
+                    data.linhasSalvas = [];
+                }
+                
+                const novaLinha = {
+                    numero: lineNumber,
+                    pontos: points,
+                };
+                
+                data.linhasSalvas.push(novaLinha);
+                
+                console.log('Linhas salvas:', data.linhasSalvas);
+            }
+
             if (points.length > 0) {
                 // Aqui você pode implementar a lógica para exibir a linha no mapa
                 // ---------------------------------------------
+                    salvaLinhas(data)
                     new montarMapa(data)
                     function montarMapa (dadosLocais) {
                         mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
@@ -107,7 +127,7 @@ function loadBusLine(lineNumber) {
                             center: centralLatLong,
                             zoom: 9
                         })
-                    let popup = new mapboxgl.Popup({ offset: 25 })
+                        let popup = new mapboxgl.Popup({ offset: 25 })
                             
                             //teoricamente passa por cada item da database em pontos e converte os dois valores separados de latitude e longitude em um só, utilizavel pelo mapbox
                             let pairedCoordinates = points.map(item => ({
@@ -116,17 +136,17 @@ function loadBusLine(lineNumber) {
                             }))
 
                             
-                    for (let index = 0; index < pairedCoordinates.length; index++) {
+                        for (let index = 0; index < pairedCoordinates.length; index++) {
                         const marker = new mapboxgl.Marker()
                             .setLngLat(pairedCoordinates[index].coordinates)
                             .setPopup(popup)
                             .addTo(map);
-                    }
+                        }
                     
                         
-                // Limpar resultados da pesquisa
-                document.getElementById('searchResults').classList.add('hidden');
-            }} else {
+                    // Limpar resultados da pesquisa
+                    document.getElementById('searchResults').classList.add('hidden');
+                }} else {
                 console.log(`Nenhum ponto encontrado para a linha ${lineNumber}`);
             }
         })
