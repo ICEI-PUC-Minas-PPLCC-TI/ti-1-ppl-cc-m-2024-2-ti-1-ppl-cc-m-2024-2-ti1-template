@@ -39,7 +39,12 @@
           if (usuarioCorrenteJSON) {
               usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
           }
-            fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`)
+            fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`, {
+              method: 'GET',
+              headers: {
+                  'Cache-Control': 'no-cache', // Impede o cache
+              }
+            })
                 .then (response => response.json())
                 .then (data => {
                     createBarChart(data);
@@ -54,7 +59,12 @@
 
         window.onload = () => {
           execucao();
-          fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`)
+          fetch (`/tarefas?id_usuario=${usuarioCorrente.id}`, {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache', // Impede o cache
+            }
+          })
           .then (response => response.json())
           .then (data => {
           tempoGasto(data)
