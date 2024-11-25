@@ -1,3 +1,5 @@
+const API_URL = 'http://localhost:3000';
+
 // Função para carregar e exibir os resultados da pesquisa
 function setupSearch() {
     const searchContainer = document.querySelector('.search-container');
@@ -97,28 +99,11 @@ function loadBusLine(lineNumber) {
         .then(response => response.json())
         .then(data => {
             const points = data.pontos.filter(point => point.linha === lineNumber);
-
-            //funçao que salva uma linha num array na db
-            function salvaLinhas(lineNumber){
-                if (!data.linhasSalvas) {
-                    data.linhasSalvas = [];
-                }
-                
-                const novaLinha = {
-                    numero: lineNumber,
-                    pontos: points,
-                };
-                
-                data.linhasSalvas.push(novaLinha);
-                
-                console.log('Linhas salvas:', data.linhasSalvas);
-            }
-
             if (points.length > 0) {
                 // Aqui você pode implementar a lógica para exibir a linha no mapa
                 // ---------------------------------------------
-                    salvaLinhas(data)
                     new montarMapa(data)
+                    salvarHistoricoLocal(lineNumber, points, data)
                     function montarMapa (dadosLocais) {
                         mapboxgl.accessToken = 'pk.eyJ1IjoiZ2xlYW9yciIsImEiOiJjbTJ2MHVjMG8wN2I0MmpxM3R6cjZmMWY5In0.4g00GInd7lPM1rUGDb0RYQ';
                         map = new mapboxgl.Map({
@@ -153,5 +138,40 @@ function loadBusLine(lineNumber) {
         .catch(error => console.error('Erro ao carregar dados da linha:', error));
 }
 
+function salvarHistoricoLocal(lineNumber, points) {
+    try {
+        // Recuperar histórico existente
+        let historico = JSON.parse(localStorage.getItem('historicoLinhas')) || [];
+        
+        // Criar novo item do histórico
+        const novoItem = {
+            numero: lineNumber,
+            quantidadePontos: points.length,
+            dataPesquisa: new Date().toISOString()
+        };
+        
+        // Verificar se a linha já existe no histórico
+        const indexExistente = historico.findIndex(item => item.numero === lineNumber);
+        
+        if (indexExistente !== -1) {
+            // Atualizar item existente
+            historico[indexExistente] = novoItem;
+        } else {
+            // Adicionar novo item no início do array
+            historico.unshift(novoItem);
+            
+            // Manter apenas as 10 pesquisas mais recentes
+            if (historico.length > 10) {
+                historico = historico.slice(0, 10);
+            }
+        }
+        
+        // Salvar histórico atualizado
+        localStorage.setItem('historicoLinhas', JSON.stringify(historico));
+        
+    } catch (erro) {
+        console.error('Erro ao salvar histórico local:', erro);
+    }
+}
 // Inicializar a busca quando o documento estiver pronto
 document.addEventListener('DOMContentLoaded', setupSearch);
