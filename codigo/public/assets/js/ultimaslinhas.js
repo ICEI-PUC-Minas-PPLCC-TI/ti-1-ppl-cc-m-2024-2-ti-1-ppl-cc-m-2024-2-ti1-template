@@ -1,5 +1,8 @@
-// Recuperar histórico existente
-let historico = JSON.parse(localStorage.getItem('historicoLinhas')) || [];
+function carregaHistorico(historicoLinhas){
+    historicoLinhas.forEach(numero => {
+        
+    });
+}
 
 
 

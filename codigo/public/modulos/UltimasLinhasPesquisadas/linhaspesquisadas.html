@@ -107,6 +107,31 @@
         </div>
     </div>
 
+    <!-- main -->
+        <div class="container">
+            <div class="controls">
+                <button onclick="mostrarComoLista()">Mostrar histórico</button>
+            </div>
+            <div id="resultado"></div>
+        </div>
+    
+        <script>
+            let historico = JSON.parse(localStorage.getItem('historicoLinhas')) || [];
+    
+            // Função para mostrar dados como lista
+            function mostrarComoLista() {
+                const resultado = document.getElementById('resultado');
+                resultado.innerHTML = '';
+                
+                historico.forEach(historico => {
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.innerHTML = `Linha: ${historico.numero}`;
+                    resultado.appendChild(div);
+                });
+            }
+        </script>    
+
 
     <!-- Footer -->
     <footer class="bg-white border-t mt-16" style="border-color: var(--secondary);">
