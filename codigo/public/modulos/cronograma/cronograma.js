@@ -34,8 +34,8 @@ window.onload = () => {
   }
 
 function carregarCronograma(data) {
-    const ids_array = Array.from(data.map(item => item.tarefas.ids))
-    
+    alert(JSON.stringify(data));
+    let ids_array = Array.from(data.map(item => item.tarefas.ids)).flat();
     fetch(`/tarefas?id_usuario=${usuarioCorrente.id}`, {
         method: 'GET',
         headers: {
@@ -45,12 +45,13 @@ function carregarCronograma(data) {
     .then(response => response.json())
     .then(dataTasks => {
         tarefaModal(dataTasks);
-        for (let i = 0; i <= ids_array.length; i++) {
+        for (let i = 0; i < ids_array.length; i++) {
+            alert(i);
             carregarTarefa(data, dataTasks, i);
         }
     })
     .catch(error => {
-        alert('Erro ao obter dados do servidor: ' + error.message);
+        alert('Erro ao obter dados do servidor 1: ' + error.message);
     });
 }
 
@@ -77,58 +78,71 @@ function valorCheckbox() {
     return checkValues;
 }
 
-function montarHorario(tarefa, diasCheck, horasInicio, minutosInicio, horasFim, minutosFim) {
-    let novoHorario;
-    fetch(`/cronograma?id=${usuarioCorrente.id}`, {
-        method: 'GET',
-        headers: {
-            'Cache-Control': 'no-cache', // Impede o cache
-        }
-    })
-      .then (response => response.json())
-      .then (data => {
-        let idsAnt = data.flatMap(item => item.tarefas.ids)
+async function montarHorario(tarefa, diasCheck, horasInicio, minutosInicio, horasFim, minutosFim) {
+    try {
+        const response = await fetch(`/cronograma?id=${usuarioCorrente.id}`, {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache', // Impede o cache
+            }
+        });
+
+        const data = await response.json();
+
+        // A lógica de montagem dos horários continua
+        let idsAnt = data.flatMap(item => item.tarefas.ids);
         if (idsAnt.includes(tarefa)) {
-            return;
+            return; // Se já tiver o id, retorna sem fazer nada
         }
-        idsAnt.push(parseInt(tarefa))
-        alert(idsAnt);
-        let horariosInicio = data.flatMap(item => item.tarefas.horarios.inicio)
+        idsAnt.push(parseInt(tarefa));
+
+        let horariosInicio = data.flatMap(item => item.tarefas.horarios.inicio);
         let inicio = {
             hr: parseInt(horasInicio),
             min: parseInt(minutosInicio)
-        }
-        horariosInicio.push(inicio)
-        let horariosFim = data.flatMap(item => item.tarefas.horarios.fim)
+        };
+        horariosInicio.push(inicio);
+
+        let horariosFim = data.flatMap(item => item.tarefas.horarios.fim);
         let fim = {
             hr: parseInt(horasFim),
             min: parseInt(minutosFim)
-        }
-        horariosFim.push(fim)
-        let diasDaSemana = data.flatMap(item => item.tarefas.horarios.diasSemana)
-        diasCheck = diasCheck.map(Number);
+        };
+        horariosFim.push(fim);
+
+        let diasDaSemana = data.flatMap(item => item.tarefas.horarios.diasSemana);
+        diasCheck = diasCheck.map(Number); // Converte os valores para números
         let novosDias = {
             dias: diasCheck
-        }
+        };
         diasDaSemana.push(novosDias);
-        novoHorario = {
-            ids: idsAnt,
-            horarios:{
-                inicio: horariosInicio,
-                fim: horariosFim,
-                diasSemana: diasDaSemana
+
+        const novoHorario = {
+            id: usuarioCorrente.id,
+            tarefas: {
+                ids: idsAnt,
+                horarios: {
+                    inicio: horariosInicio,
+                    fim: horariosFim,
+                    diasSemana: diasDaSemana
+                }
             }
-        }
-        alert(JSON.stringify(novoHorario));
-      })
-      .catch (error => {
-          alert ('Erro ao obter dados do servidor 2:' + error.message);
-        })
-    return novoHorario;
+        };
+
+        // Se você quiser confirmar a execução antes de retornar
+        console.log("Novo horário montado dentro de montarHorario:", novoHorario);
+        
+        return novoHorario;
+    } catch (error) {
+        alert('Erro ao obter dados do servidor 2: ' + error.message);
+    }
 }
 
-function inserirHorario(novoHorario) {
-    fetch(`/cronograma?id=${usuarioCorrente.id}`, {
+
+
+function inserirHorario(data, novoHorario) {
+    alert(JSON.stringify(novoHorario));
+    fetch(`/cronograma/${usuarioCorrente.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -147,45 +161,64 @@ function inserirHorario(novoHorario) {
         });
 }
 
-function criarHorario() {
-    usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
-    if (usuarioCorrenteJSON) {
-        usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
-    }
-        fetch(`/cronograma?id=${usuarioCorrente.id}`, {
+async function criarHorario() {
+    try {
+        // Recupera o usuário atual da sessão
+        const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+        if (usuarioCorrenteJSON) {
+            usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
+        }
+
+        // Faz a requisição GET para obter os dados do cronograma
+        const response = await fetch(`/cronograma?id=${usuarioCorrente.id}`, {
             method: 'GET',
             headers: {
                 'Cache-Control': 'no-cache', // Impede o cache
             }
-        })
-          .then (response => response.json())
-          .then (data => {
-            let tarefa = document.getElementById('tasks').value;
-            let horarioInicio = document.getElementById('horarioInicio').value;
-            let horarioFim = document.getElementById('horarioFim').value;
-            let diasCheck = valorCheckbox();
-            let horas = horarioInicio.split(":");
-            let horasInicio = horas[0];
-            let minutosInicio = horas[1];
-            horas = horarioFim.split(":");
-            let horasFim = horas[0];
-            let minutosFim = horas[1];
-            let novoHorario = montarHorario(tarefa, diasCheck, horasInicio, minutosInicio, horasFim, minutosFim);
-            inserirHorario(data, novoHorario);
-          })
-          .catch (error => {
-              alert ('Erro ao obter dados do servidor 3:' + error.message);
-          })
+        });
+
+        // Aguarda a resposta e converte os dados para JSON
+        const data = await response.json();
+
+        // Coleta os valores dos elementos HTML
+        let tarefa = document.getElementById('tasks').value;
+        let horarioInicio = document.getElementById('horarioInicio').value;
+        let horarioFim = document.getElementById('horarioFim').value;
+        let diasCheck = valorCheckbox();
+
+        // Divide os horários em horas e minutos
+        let horas = horarioInicio.split(":");
+        let horasInicio = horas[0];
+        let minutosInicio = horas[1];
+        horas = horarioFim.split(":");
+        let horasFim = horas[0];
+        let minutosFim = horas[1];
+
+        // Aqui, chamamos a função montarHorario e aguardamos o seu retorno
+        const novoHorario = await montarHorario(tarefa, diasCheck, horasInicio, minutosInicio, horasFim, minutosFim);
+
+        // Adiciona um alert para ver se novoHorario está correto
+        alert("Novo horário montado: " + JSON.stringify(novoHorario));
+
+        // Depois que novoHorario estiver montado, chamamos inserirHorario
+        inserirHorario(data, novoHorario);
+
+    } catch (error) {
+        // Se ocorrer algum erro, exibe uma mensagem
+        alert('Erro ao obter dados do servidor 3: ' + error.message);
     }
+}
+
 
 function carregarTarefa(data, dataTasks, i) {
+    
     let dias = Array.from(data.map(item => item.tarefas.horarios.diasSemana[i].dias));
+    alert(dias);
     //let horarios = Array.from(data.map(item => item.tarefas.horarios.inicio[i].hr + ":" + item.tarefas.horarios.inicio[i].min + " - "
     //   + item.tarefas.horarios.fim[i].hr + ":" + item.tarefas.horarios.fim[i].min));
     let horarios = Array.from(data.map(item => item.tarefas.horarios.inicio[i].hr + ":" + String(item.tarefas.horarios.inicio[i].min).padStart(2, '0') + " - "
        + item.tarefas.horarios.fim[i].hr + ":" + String(item.tarefas.horarios.fim[i].min).padStart(2, '0')));
     let nomes = Array.from(data.map(item => dataTasks.find(task => task.id === item.tarefas.ids[i])?.nomeTarefa));
-      
     
     // tarefaHTML.className = "col";
     for(let i = 0; i < dias.length; i++) {
