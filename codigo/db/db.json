@@ -5,6 +5,7 @@
       "login": "admin",
       "senha": "123",
       "nome": "Administrador do Sistema",
+      "dataNascimento": "1995-05-10",
       "email": "admin@abc.com"
     },
     {
@@ -12,12 +13,14 @@
       "login": "user",
       "senha": "123",
       "nome": "Usuario Comum",
+      "dataNascimento": "1995-05-10",
       "email": "user@abc.com"
     },
     {
       "login": "user2",
       "senha": "123",
       "nome": "Usuário da Silva",
+      "dataNascimento": "1995-05-10",
       "email": "usuariolopes@email.com",
       "id": 3
     }
@@ -584,9 +587,88 @@
   ],
   "cronograma": [
     {
+      "id": 1,
+      "tarefas": {
+        "ids": [1, 2, 4, 6, 8, 10, 12, 14, 16, 18],
+        "horarios": {
+          "inicio": [
+            {
+              "hr": 9,
+              "min": 0
+            },
+            {
+              "hr": 11,
+              "min": 30
+            },
+            {
+              "hr": 14,
+              "min": 0
+            },
+            {
+              "hr": 16,
+              "min": 30
+            },
+            {
+              "hr": 18,
+              "min": 0
+            },
+            {
+              "hr": 20,
+              "min": 30
+            },
+            {
+              "hr": 22,
+              "min": 0
+            }
+          ],
+          "fim": [
+            {
+              "hr": 11,
+              "min": 0
+            },
+            {
+              "hr": 13,
+              "min": 0
+            },
+            {
+              "hr": 15,
+              "min": 30
+            },
+            {
+              "hr": 18,
+              "min": 0
+            },
+            {
+              "hr": 19,
+              "min": 30
+            },
+            {
+              "hr": 22,
+              "min": 30
+            },
+            {
+              "hr": 23,
+              "min": 30
+            }
+          ],
+          "diasSemana": [
+            {
+              "dias": [1, 3, 5]
+            },
+            {
+              "dias": [2, 4]
+            },
+            {
+              "dias": [1, 2, 5]
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": 2,
       "tarefas": {
-        "ids": [1, 2, 3],
+        "ids": [3, 5, 7],
         "horarios":
           {
             "inicio":[
