@@ -137,14 +137,12 @@
             <div class="modal-body">
               <div id="login-box" class="col-md-12">
                 <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
-                  <h3 class="text-center text-info">Novo tarefa</h3>
+                  <h3 class="text-center text-info">Nova tarefa</h3>
                   <div class="form-group">
                     <!-- <label for="login" class="text-info">Tarefa</label><br> -->
                     <label for="tasks">Tarefa</label>
                     <select name="tasks" id="tasks" form="login-form">
-                      <option value="volvo">Volvo</option>
                     </select>
-                    <input type="select" name="txt_login" id="txt_login" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="horarioInicio" class="text-info">Horário Inicio</label><br>
@@ -155,32 +153,33 @@
                     <input type="time" name="horarioFim" id="horarioFim" class="form-control">
                   </div>
                   <div class="form-group">
-                    <input type="checkbox" id="checkDom" name="checkDom" value="1">
-                    <label for="checkDom"> Dom</label><br>
-                    <input type="checkbox" id="checkSeg" name="checkSeg" value="2">
-                    <label for="checkSeg"> Seg</label><br>
-                    <input type="checkbox" id="checkTer" name="checkTer" value="3">
-                    <label for="checkTer"> Ter</label><br>
-                    <input type="checkbox" id="checkQua" name="checkQua" value="4">
-                    <label for="checkQua"> Qua</label><br>
-                    <input type="checkbox" id="checkQui" name="checkQui" value="5">
-                    <label for="checkQui"> Qui</label><br>
-                    <input type="checkbox" id="checkSex" name="checkSex" value="6">
-                    <label for="checkSex"> Sex</label><br>
-                    <input type="checkbox" id="checkSab" name="checkSab" value="7">
-                    <label for="checkSab"> Sab</label><br>
+                    <label for="checkSem" class="text-info">Dias da Semana</label><br>
+                    <input type="checkbox" id="checkDom" name="checkSem" value="1">
+                    <label for="checkDom"> Dom</label>
+                    <input type="checkbox" id="checkSeg" name="checkSem" value="2">
+                    <label for="checkSeg"> Seg</label>
+                    <input type="checkbox" id="checkTer" name="checkSem" value="3">
+                    <label for="checkTer"> Ter</label>
+                    <input type="checkbox" id="checkQua" name="checkSem" value="4">
+                    <label for="checkQua"> Qua</label>
+                    <input type="checkbox" id="checkQui" name="checkSem" value="5">
+                    <label for="checkQui"> Qui</label>
+                    <input type="checkbox" id="checkSex" name="checkSem" value="6">
+                    <label for="checkSex"> Sex</label>
+                    <input type="checkbox" id="checkSab" name="checkSem" value="7">
+                    <label for="checkSab"> Sab</label>
                   </div>
                 </form>
               </div>
             </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
           </div>
         </div>
       </div>
     </div>
-        <button type="button" class="btn btn-danger" id="delbutton">Deletar tarefa</button>
+      <!-- <button type="button" class="btn btn-danger" id="delbutton">Deletar tarefa</button> -->  
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
