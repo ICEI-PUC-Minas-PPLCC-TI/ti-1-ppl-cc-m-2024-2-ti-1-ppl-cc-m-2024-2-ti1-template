@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     fullNameInput.value = user.nome;
                     birthDateInput.value = user.dataNascimento;
                     emailInput.value = user.email;
-                    usernameInput.value = user.username;
+                    usernameInput.value = user.login;
                     passwordInput.value = user.senha;
                 } else {
                     console.error("Nenhum usuário encontrado.");
