@@ -141,27 +141,11 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 ## Gerenciamento do Projeto
 
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
-
-![Exemplo de Kanban](images/exemplo-kanban.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesta parte do documento, você deve apresentar  o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
->
-> **Orientações**:
->
-> - [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-> - [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
-> - [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+Nesse projeto passamos por alguns imprevistos com os participantes limitando a quantidade de pessoas que poderiam participar, e também a falta de conhecimento em algumas ferramentas , mas com a ajuda do professor e da equipe conseguimos superar esses obstáculos, planejamos reuniões e organizamos as atividades para que todos pudessem contribuir de forma eficaz e equivalente para não sobrecarregar ninguém. Além disso, utilizamos o Miro para registrar as ideias e discussões, o que ajudou a administrar o tempo e a priorizar as atividades e seu público alvo.
 
 # Solução Implementada
 
-Esta seção apresenta todos os detalhes da solução criada no projeto.
+No início nós pensamos em um app que pudesse ter rotas alternativas para o usuário, mas ao longo do projeto percebemos que o problema da lotação nos transportes públicos é algo muito complexo para tentar resolver em um app só, por isso nosso grupo procurou uma alternativa que vimos muito prática, o intuito do nosso app é registrar ônibus e sus linhas, para ter livre conhecimento dos seus pontos existentes e achar as linhas com maior facilidade.
 
 ## Vídeo do Projeto
 
@@ -169,102 +153,98 @@ O vídeo a seguir traz uma apresentação do problema que a equipe está tratand
 
 [![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.
->
-> Inclua um link para o vídeo do projeto.
-
 ## Funcionalidades
 
-Esta seção apresenta as funcionalidades da solução.Info
-
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+Cadastro de linhas dos Ônibus
 
 Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
 
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
+* **Estrutura de dados:** [linhas][pontos]
 * **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Abra o site
+  * Acesse o menu principal e escreva o número da linha e seu tipo
+  * Em seguida, adicione seus pontos
 * **Tela da funcionalidade**:
+![crud 1](./images/crud%201.png)
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![crud 2](./images/crud%202.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+![rcud 3](./images/crud%203.png)
+
+Registro de horários
+
+* **Estrutura de dados:** [linhas][pontos]
+* **Instruções de acesso:**
+  * Abra o site
+  * Acesse o menu principal e veja os horários cadastrados
+* **Tela da funcionalidade**:
+![horários](./images/horários.png)
+
+Linhas pesquisadas
+
+* **Estrutura de dados:** [linhas][pontos]
+* **Instruções de acesso:**
+  * Abra o site
+  * Acesse o menu principal e ver o meu histórico
+* **Tela da funcionalidade**:
+  ![histórico](./images/histórico.png)
 
 ## Estruturas de Dados
 
-Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
-
-Contatos da aplicação
+Registro das linhas já cadastradas dentro o sistema
 
 ```json
-  {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
+ "linhas": [
+    {
+      "id": "1",
+      "numero": "3502",
+      "tipo": "Comum"
+    },
+    {
+      "id": "2",
+      "numero": "355",
+      "tipo": "Comum"
+    }
+ ],
   
 ```
 
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
+Registro dos pontos já cadastrados
 
 ```json
-  {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
-  }
+ "pontos": [
+    {
+      "id": "1",
+      "linha": "3502",
+      "latitude": -19.878853909942613,
+      "longitude": -43.98593263294486
+    },
+    {
+      "id": "2",
+      "linha": "3502",
+      "latitude": -19.8788688174539,
+      "longitude": -43.98593966137369
+    },
+    {
+      "id": "3",
+      "linha": "3502",
+      "latitude": -19.87812471190135,
+      "longitude": -43.9851457275154
+    }
+ ],
 ```
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
 
 ## Módulos e APIs
 
 Esta seção apresenta os módulos e APIs utilizados na solução
 
 **Images**:
-
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
-
-**Fonts:**
-
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
+![mapbox](./images/mapboxapi.png)
 
 **Scripts:**
+Usamos APIs como Mapbox para obter informações de localização e pontos de interesse, e a API do geoapify para usar geolocalização reversa para registrar o nome das ruas de acordo com suas lat e lon.
 
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
 
 # Referências
 
